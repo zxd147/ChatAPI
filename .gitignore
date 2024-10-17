@@ -1,0 +1,17 @@
+# 自定义目录/文件
+user_info.json
+gpt_conf.json
+output.log
+/history/*
+!/history/
+
+# 日志文件
+*.log
+/logs/*
+!/logs/
+
+# IDE和编辑器生成的文件
+/.idea/
+__pycache__/
+
+

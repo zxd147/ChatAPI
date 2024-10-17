@@ -1,0 +1,94 @@
+{
+    "channel": {
+        "FastGPT": {
+            "Qwen2-7B-Instruct": {
+                "knowledge_base": {
+                    "chat_url": "http://192.168.0.251:3000/api/v1/chat/completions",
+                    "headers": {
+                        "Authorization": "Bearer fastgpt-zh9sQXYaPTtm8wKDQH6E2XEXZicQ7bD82rZXdYrR8TgdIT9ULLl7Qn",
+                        "Content-Type": "application/json"
+                    },
+                    "history_len": 5,
+                    "param": {
+                        "chatId": "abcd",
+                        "detail": false,
+                        "messages": [],
+                        "model": "Qwen2-7B-Instruct",
+                        "stream": false,
+                        "variables": {
+                            "name": "张三",
+                            "uid": "123"
+                        }
+                    }
+                },
+                "direct": {
+                    "chat_url": "http://192.168.0.251:3000/api/v1/chat/completions",
+                    "headers": {
+                        "Authorization": "Bearer fastgpt-zh9sQXYaPTtm8wKDQH6E2XEXZicQ7bD82rZXdYrR8TgdIT9ULLl7Qn",
+                        "Content-Type": "application/json"
+                    },
+                    "history_len": 5,
+                    "param": {
+                        "chatId": "abcd",
+                        "detail": false,
+                        "messages": [],
+                        "model": "Qwen2-7B-Instruct",
+                        "stream": false,
+                        "max_new_tokens": 100,
+                        "variables": {
+                            "name": "张三",
+                            "uid": "123"
+                        }
+                    }
+                }
+            }
+        },
+        "Langchain": {
+            "ChatGLM-6B": {
+                "direct": {
+                    "chat_url": "http://192.168.0.246:7861/chat/chat",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "history_len": 5,
+                    "param": {
+                        "conversation_id": 10086,
+                        "history": [],
+                        "max_tokens": 0,
+                        "messages": null,
+                        "model_name": "ChatGLM-6B",
+                        "prompt_name": "hs",
+                        "query": "",
+                        "stream": false,
+                        "temperature": 0.3
+                    }
+                },
+                "knowledge_base": {
+                    "chat_url": "http://192.168.0.246:7861/chat/knowledge_base_chat",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "history_len": 5,
+                    "param": {
+                        "history": [],
+                        "knowledge_base_name": "zyy",
+                        "max_tokens": 0,
+                        "messages": null,
+                        "model_name": "ChatGLM-6B",
+                        "prompt_name": "hs",
+                        "query": "",
+                        "score_threshold": 0.8,
+                        "stream": false,
+                        "temperature": 0.1,
+                        "top_k": 15
+                    }
+                }
+            }
+        }
+    },
+    "current_chat_channel": "FastGPT",
+    "current_chat_llm": "Qwen2-7B-Instruct",
+    "current_chat_mode": "direct",
+    "max_tokens": 60,
+    "min_tokens": 20
+}

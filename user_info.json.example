@@ -1,0 +1,18 @@
+{
+    "current_user_id": "1720777958",
+    "all_user_info": {
+        "admin": {
+            "uid": "admin",
+            "channel": "FastGPT",
+            "models": "Qwen2",
+            "mode": "knowledge_base",
+            "conversation_id": [
+                "1024"
+            ],
+            "knowledge_base": "guangxin",
+            "model_name": "ChatGLM-6B",
+            "project_type": "1"
+        }
+    }
+}
+
