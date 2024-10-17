@@ -14,4 +14,11 @@ output.log
 /.idea/
 __pycache__/
 
+temp*
+test*
+output*
+demo.py
+exam.py
+
+
 
