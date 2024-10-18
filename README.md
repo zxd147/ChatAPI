@@ -1,4 +1,4 @@
 # ChatAPI
-连接本地部署的Langcahin-Chatchat的API接口
+连接本地部署的Langcahin-Chatchat和FastGPT的API接口
 
 
