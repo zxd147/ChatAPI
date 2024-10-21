@@ -1,6 +1,5 @@
 import os
 import re
-import sys
 import copy
 import json
 import uuid
@@ -71,24 +70,24 @@ class Chat:
                 answers = ['/reset']
                 return code, messages, answers
             if self.current_chat_channel == "FastGPT":
-                code, messages, answer = await self.chat_with_all(completions_args)
+                code, messages, answer = await self.chat_with_fastgpt(completions_args)
+            # elif self.current_chat_channel == "Langchain":
             else:
-                if self.current_chat_mode == "knowledge_base":
-                    code, messages, answer = self.chat_with_knowledge_base(completions_args)
-                else:
-                    code, messages, answer = self.chat_with_model(completions_args)
+                code, messages, answer = self.chat_with_langchain(completions_args)
         answers = split_text(answer, self.min_tokens, self.max_tokens, sentences=[])
         return code, messages, answers
 
-    def chat_with_model(self, completions_args):
+    def chat_with_langchain(self, completions_args):
         query = completions_args['query'] or completions_args['content']
         chat_url = self.mode_conf['chat_url']
-        data = copy.deepcopy(self.mode_conf['param'])
         headers = self.mode_conf['headers']
+        data = copy.deepcopy(self.mode_conf['param'])
         # data['query'] = f'{query} \n回复需要清晰且高度概括，并尽量用一句话回复'
         data['query'] = f'{query} \n回复需要清晰且高度概括'
         data['conversation_id'] = self.conversation_id
         data['history'] = self.history
+        data['history_len'] = self.history_len
+        data['knowledge_base_name'] = self.current_user_info['knowledge_base']
         print(f"ChatGPT Request: \n{json.dumps(data, indent=None)}\n")
         response = requests.post(chat_url, headers=headers, data=json.dumps(data))
         # 检查请求是否成功
@@ -97,7 +96,7 @@ class Chat:
             api_logger.info(result)
             code = 0
             messages = 'ChatGPT Response session successfully'
-            answer = result["text"]
+            answer = result["answer"] if self.current_chat_mode == "knowledge_base" else result["text"]
             user_record = {"role": "user", "content": query}
             assistant_record = {"role": "assistant", "content": answer}
             self.add_history(user_record)
@@ -112,41 +111,7 @@ class Chat:
             print(messages)
         return code, messages, answer
 
-    def chat_with_knowledge_base(self, completions_args):
-        query = completions_args['query'] or completions_args['content']
-        chat_url = self.mode_conf['chat_url']
-        headers = self.mode_conf['headers']
-        data = copy.deepcopy(self.mode_conf['param'])
-        # data['query'] = f'{query} \n回复需要清晰且高度概括，并尽量用一句话回复'
-        data['query'] = f'{query} \n回复需要清晰且高度概括'
-        data['knowledge_base_name'] = self.current_user_info['knowledge_base']
-        data['history'] = self.history
-        data['history_len'] = self.history_len
-        print(f"ChatGPT Request: \n{json.dumps(data, ensure_ascii=False, indent=None)}\n")
-        response = requests.post(chat_url, headers=headers, data=json.dumps(data))
-        # 检查请求是否成功
-        if response.status_code == 200:
-            result = response.json()
-            # print(f"Response: \n{response.json()}\n")
-            api_logger.info(result)
-            code = 0
-            messages = 'ChatGPT Request session successfully'
-            answer = result["answer"]
-            user_record = {"role": "user", "content": query}
-            assistant_record = {"role": "assistant", "content": answer}
-            self.add_history(user_record)
-            self.add_history(assistant_record)
-            self.write_history(user_record)
-            self.write_history(assistant_record)
-        else:
-            code = -1
-            messages = f'ChatGPT Request failed with status code {response.status_code}, \n{response.text}'
-            answer = ''
-            api_logger.error(response.text)
-            print(messages)
-        return code, messages, answer
-
-    async def chat_with_all(self, completions_args):
+    async def chat_with_fastgpt(self, completions_args):
         # 等待获取响应，并立即返回Response对象
         sno = completions_args['sno']
         uid = completions_args['uid']
