@@ -4,7 +4,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Literal
 
 import GPUtil
 import psutil
@@ -49,11 +49,11 @@ executor = ThreadPoolExecutor(max_workers=10)
 
 class ChatSettingsRequest(BaseModel):
     uid: Optional[Union[int, str]] = 'admin'
-    channel: str = 'FastGPT'
-    model: str = 'Qwen2-7B-Instruct'
-    mode: str = 'knowledge_base'
+    channel: Literal['FastGPT', 'Langchain'] = 'FastGPT'
+    model: Literal['Qwen2-7B-Instruct', 'ChatGLM-6B'] = 'Qwen2-7B-Instruct'
+    mode: Literal['knowledge_base', 'direct'] = 'knowledge_base'
     stream: bool = True
-    knowledge_base: str = 'zyy'
+    knowledge_base: Literal['zyy', 'guangxin', 'dentistry'] = 'zyy'
     project_type: int = 1
 
 
