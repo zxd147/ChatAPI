@@ -11,7 +11,7 @@ import psutil
 import torch
 import uvicorn
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
 from pydantic import BaseModel, Field
 
 from ChatGPT import Chat
@@ -112,8 +112,8 @@ async def health():
     return JSONResponse(status_code=200, content=health_data)
 
 
-@chat_app.get("/status")
-def get_status():
+@chat_app.get("/monitor")
+def fetch_system_status():
     """获取电脑运行状态"""
     cpu_percent = psutil.cpu_percent(interval=1)
     memory_info = psutil.virtual_memory()
@@ -148,6 +148,11 @@ def get_status():
         "memory_percent": memory_percent,
         "gpu": gpuInfo,
     }
+
+
+@chat_app.get("/status")
+async def get_system_status():
+    return FileResponse('status.html')
 
 
 @chat_app.post("/v1/chat/settings")
