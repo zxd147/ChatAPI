@@ -97,7 +97,7 @@ async def log_requests(request: Request, call_next):
 @chat_app.get("/")
 async def index():
     service_name = """
-        <html> <head> <title>chat_api_service</title> </head>
+        <html> <head> <title>chat_service_api</title> </head>
             <body style="display: flex; justify-content: center;"> <h1> chat_service_api</h1></body> </html>
         """
     return HTMLResponse(status_code=200, content=service_name)
