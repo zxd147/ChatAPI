@@ -43,7 +43,7 @@
                 }
             }
         },
-        "Langchain": {
+        "LangChain": {
             "ChatGLM-6B": {
                 "direct": {
                     "chat_url": "http://192.168.0.246:7861/chat/chat",

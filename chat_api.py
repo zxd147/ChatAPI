@@ -1,20 +1,20 @@
 import json
 import logging
 import sys
-import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
-from typing import List, Optional, Union, Literal
 
 import GPUtil
 import psutil
 import torch
 import uvicorn
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from ChatGPT import Chat
+from openai_schema import SettingsRequest, SettingsResponse, ChatRequest, ChatResponse
+from utils.log_utils import setup_console_logger
 
 
 def init_app():
@@ -41,41 +41,10 @@ def configure_logging():
 
 
 # 创建一个日志器
-chat_logger = configure_logging()
+chat_logger = setup_console_logger(level='INFO')
 chat_app = FastAPI()
 # 创建一个线程池
 executor = ThreadPoolExecutor(max_workers=10)
-
-
-class ChatSettingsRequest(BaseModel):
-    uid: Optional[Union[int, str]] = 'admin'
-    channel: Literal['FastGPT', 'Langchain'] = 'FastGPT'
-    model: Literal['Qwen2-7B-Instruct', 'ChatGLM-6B'] = 'Qwen2-7B-Instruct'
-    mode: Literal['knowledge_base', 'direct'] = 'knowledge_base'
-    stream: bool = True
-    knowledge_base: Literal['zyy', 'guangxin', 'dentistry'] = 'zyy'
-    project_type: int = 1
-
-
-class ChatSettingsResponse(BaseModel):
-    code: int
-    messages: Optional[str]
-    data: Optional[List[str]] = None
-
-
-class ChatCompletionRequest(BaseModel):
-    sno: Optional[Union[int, str]] = Field(default_factory=lambda: int(time.time() * 100))
-    uid: Optional[Union[int, str]] = 'admin'
-    content: str = None
-    query: str = None
-
-
-class ChatCompletionResponse(BaseModel):
-    code: int
-    messages: Optional[str]
-    sno: Optional[Union[int, str]] = None
-    data: Optional[List[str]] = None
-    answers: Optional[List[str]] = []
 
 
 # 将 Pydantic 模型实例转换为 JSON 字符串
@@ -155,68 +124,79 @@ async def get_system_status():
     return FileResponse('status.html')
 
 
+@chat_app.post("/v1/settings")
 @chat_app.post("/v1/chat/settings")
-async def chat_settings(request: ChatSettingsRequest):
+async def chat_settings(request: SettingsRequest):
     try:
-        settings_data = request.model_dump()
-        logs = f"Settings request param: {settings_data}"
+        sno = request.sno
+        logs = f"Settings request param: {request.model_dump()}"
         chat_logger.info(logs)
-        code, messages = await chat.set(settings_data)
-        results = ChatSettingsResponse(
+        code, messages = await chat.set(request.model_dump())
+        results = SettingsResponse(
+            sno=sno,
             code=code,
             messages=messages
         )
-        logs = f"Settings response results: {results}"
+        logs = f"Settings response results: {results.model_dump()}"
         chat_logger.info(logs)
         # return results
         return JSONResponse(status_code=200, content=results.model_dump())
-    except Exception as e:
-        error_message = ChatSettingsResponse(
+    except json.JSONDecodeError as je:
+        error_message = ChatResponse(
             code=-1,
-            messages=str(e)
+            messages=f"JSONDecodeError, Invalid JSON format: {str(je)} "
         )
-        logs = f"Settings response error: {error_message}"
+        logs = f"Completions response  error: {error_message.model_dump()}"
         chat_logger.error(logs)
-        return JSONResponse(status_code=500, content=error_message.model_dump())
+        return JSONResponse(status_code=400, content=error_message.model_dump())
+    # except Exception as e:
+    #     sno = request.sno
+    #     error_message = SettingsResponse(
+    #         sno=sno,
+    #         code=-1,
+    #         messages=str(e)
+    #     )
+    #     logs = f"Settings response error: {error_message.model_dump()}"
+    #     chat_logger.error(logs)
+    #     return JSONResponse(status_code=500, content=error_message.model_dump())
 
 
 @chat_app.post("/v1/chat/completions")
-async def chat_completions(request: ChatCompletionRequest):
+async def chat_completions(request: ChatRequest):
     try:
-        request_data = request.model_dump()
-        sno = request_data['sno']
-        logs = f"Completions request param: {request_data}"
+        sno = request.sno
+        logs = f"Completions request param: {request.model_dump()}"
         chat_logger.info(logs)
-        code, messages, answers = await chat.completions(request_data)
-        results = ChatCompletionResponse(
+        code, messages, answers = await chat.completions(request.model_dump())
+        results = ChatResponse(
             code=code,
             sno=sno,
             messages=messages,
             data=answers,
             answers=answers
         )
-        logs = f"Completions response results: {results}\n"
+        logs = f"Completions response results: {results.model_dump()}"
         chat_logger.info(logs)
         return JSONResponse(status_code=200, content=results.model_dump())
     except json.JSONDecodeError as je:
-        error_message = ChatCompletionResponse(
+        error_message = ChatResponse(
             code=-1,
             messages=f"JSONDecodeError, Invalid JSON format: {str(je)} "
         )
-        logs = f"Completions response  error: {error_message}\n"
+        logs = f"Completions response  error: {error_message.model_dump()}"
         chat_logger.error(logs)
         return JSONResponse(status_code=400, content=error_message.model_dump())
-    except Exception as e:
-        error_message = ChatCompletionResponse(
-            code=-1,
-            messages=f"Exception, {str(e)}"
-        )
-        logs = f"Completions response error: {error_message}\n"
-        chat_logger.error(logs)
-        return JSONResponse(status_code=500, content=error_message.model_dump())
+    # except Exception as e:
+    #     error_message = ChatResponse(
+    #         code=-1,
+    #         messages=f"Exception, {str(e)}"
+    #     )
+    #     logs = f"Completions response error: {error_message.model_dump()}"
+    #     chat_logger.error(logs)
+    #     return JSONResponse(status_code=500, content=error_message.model_dump())
 
 
 if __name__ == '__main__':
     chat = init_app()
-    uvicorn.run(chat_app, host='0.0.0.0', port=8090)
     # uvicorn.run(chat_app, host='0.0.0.0', port=8090, workers=2, limit_concurrency=4, limit_max_requests=100)
+    uvicorn.run(chat_app, host='0.0.0.0', port=8091)
