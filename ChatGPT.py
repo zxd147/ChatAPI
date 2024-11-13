@@ -10,13 +10,21 @@ import requests
 from datetime import datetime
 from seg_sentences import split_text
 from update_load_config import load_config, update_config
+from utils.log_utils import setup_file_logger
 
+
+# # 创建一个日志器
+# api_logger = logging.getLogger('GPT')
+# api_logger.setLevel(logging.INFO)
+# # 创建一个文件处理器并设置级别和格式
+# file_handler = logging.FileHandler(log_path)
+# file_handler.setLevel(logging.INFO)
+# file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s \n %(message)s')
+# file_handler.setFormatter(file_formatter)
+# # # 将处理器添加到日志器
+# api_logger.addHandler(file_handler)
 # 创建一个信号量，限制同时运行的任务数为10
 semaphore = asyncio.Semaphore(4)
-# 创建一个日志器
-api_logger = logging.getLogger('GPT')
-api_logger.setLevel(logging.INFO)
-# 创建一个文件处理器并设置级别和格式
 log_dir = 'logs'
 log_file = 'api.log'
 log_path = f'{log_dir}/{log_file}'
@@ -25,12 +33,7 @@ if os.path.exists(log_path):
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     new_log_path = f'{log_dir}/{current_time}_{log_file}'
     os.rename(log_path, new_log_path)
-file_handler = logging.FileHandler(log_path)
-file_handler.setLevel(logging.INFO)
-file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s \n %(message)s')
-file_handler.setFormatter(file_formatter)
-# 将处理器添加到日志器
-api_logger.addHandler(file_handler)
+api_logger = setup_file_logger(__file__, log_path)
 
 
 class Chat:
