@@ -99,6 +99,7 @@ class ChatRequest(OpenAIBaseModel):
     sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
     uid: Optional[Union[int, str]] = 'null'
     stream: bool = False
+    messages: List[dict[str, str]] = []
     content: str = ''
     query: str = ''
 
@@ -118,7 +119,8 @@ class ChatCompletionRequest(OpenAIBaseModel):
 
     model: Optional[str] = None
     stream: Optional[bool] = None
-    messages: List[dict[str, str]] = []
+    # messages: List[dict[str, str]] = []
+    messages: List[ChatMessage] = []
     extra_body: Optional[dict] = {}
 
     functions: Optional[List[Dict]] = None

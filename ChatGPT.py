@@ -83,19 +83,29 @@ class Chat:
         # 等待获取响应，并立即返回Response对象
         sno = completions_args['sno']
         uid = completions_args['uid']
+        messages = completions_args['messages']
         query = completions_args['query'] or completions_args['content']
         chat_url = self.mode_conf['chat_url']
         headers = copy.deepcopy(self.mode_conf['headers'])
         param = copy.deepcopy(self.mode_conf['param'])
         model = self.current_user_info['model']
         stream = self.current_user_info['stream']
-        messages = [{"role": "user", "content": query}]
-        param.update({"chatId": uid}) if uid != 'null' else param.pop("chatId", None)
+        conversation_id = self.conversation_id
+        if messages:
+            param.pop("chatId", None)
+            if len(messages) > 1:
+                messages = self.history + messages
+        elif query:
+            param.update({"chatId": conversation_id})
+            messages = [{"role": "user", "content": query}]
+        else:
+            # 在没有 messages 和 query 时执行其他处理
+            raise ValueError("No messages or query provided in the request.")
         param['model'] = model
         param['stream'] = stream
         param['variables']['uid'] = uid
         param['variables']['name'] = sno
-        param['messages'] = messages if uid != 'null' else self.history + messages
+        param['messages'] = messages
         logs = f"FastGPT request param: \n{json.dumps(param, ensure_ascii=False, indent=None)}\n"
         api_logger.info(logs)
         answer = ''
