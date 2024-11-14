@@ -10,7 +10,7 @@ import requests
 from datetime import datetime
 from seg_sentences import split_text
 from update_load_config import load_config, update_config
-from utils.log_utils import setup_file_logger
+from utils.log_utils import logger
 
 
 # # 创建一个日志器
@@ -24,16 +24,8 @@ from utils.log_utils import setup_file_logger
 # # # 将处理器添加到日志器
 # api_logger.addHandler(file_handler)
 # 创建一个信号量，限制同时运行的任务数为10
-semaphore = asyncio.Semaphore(4)
-log_dir = 'logs'
-log_file = 'api.log'
-log_path = f'{log_dir}/{log_file}'
-if os.path.exists(log_path):
-    # 获取当前时间
-    current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-    new_log_path = f'{log_dir}/{current_time}_{log_file}'
-    os.rename(log_path, new_log_path)
-api_logger = setup_file_logger(log_path)
+
+api_logger = logger
 
 
 class Chat:

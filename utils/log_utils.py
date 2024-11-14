@@ -13,6 +13,7 @@ logger.remove()
 # log_format = "<g>{time:MM-DD HH:mm:ss}</g> <lvl>{level:<9}</lvl>| {file}:{line} | {message}"
 log_format = "<g>{time:MM-DD HH:mm:ss}</g> <lvl>{level:<9}</lvl> \n{message}"
 
+
 # logger.add(sys.stdout, level="INFO", format=log_format, backtrace=True, diagnose=True)
 
 
@@ -43,30 +44,11 @@ def configure_logging():
     return logger
 
 
-def setup_console_logger(level="INFO"):
-    """设置控制台日志"""
-    logger.remove()  # 移除默认的日志输出
-    # 在日志中包含完整的异常堆栈跟踪, 增加更多的诊断信息
-    logger.add(sys.stdout, level=level, format=log_format, backtrace=True,
-               diagnose=True)
-    return logger
-
-
-def setup_file_logger(log_file="file.log", level="INFO"):
-    """设置文件日志"""
-    logger.remove()  # 移除默认的日志输出
-    logger.add(log_file, level=level, format=log_format, backtrace=True,
-               diagnose=True)
-    return logger
-
-
-def setup_console_and_file_logger(log_file="file.log", level="INFO"):
-    """设置同时输出到控制台和文件的日志"""
-    logger.remove()  # 移除默认的日志输出
-    logger.add(sys.stdout, level=level, format=log_format, backtrace=True,
-               diagnose=True)
-    logger.add(log_file, level=level, format=log_format, backtrace=True,
-               diagnose=True)
+def setup_logger(log_file="file.log", console_level="INFO", file_level="DEBUG"):
+    logger.add(sys.stdout, level=console_level, format=log_format, backtrace=True, diagnose=True,
+               filter=lambda record: record["level"].name == "INFO")
+    logger.add(log_file, level=file_level, format=log_format, backtrace=True, diagnose=True,
+               filter=lambda record: record["level"].name == "DEBUG")
     return logger
 
 

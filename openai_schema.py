@@ -96,6 +96,7 @@ class SettingsResponse(OpenAIBaseModel):
 
 
 class ChatRequest(OpenAIBaseModel):
+    model: str = None
     sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
     uid: Optional[Union[int, str]] = 'null'
     stream: bool = None
