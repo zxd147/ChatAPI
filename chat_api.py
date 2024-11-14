@@ -51,15 +51,23 @@ def rename_file(ori_dir, ori_file):
         # 构建新的文件路径
         new_log_path = os.path.join(ori_dir, f'{formatted_time}_{ori_file}')
         os.rename(ori_log_path, new_log_path)
+<<<<<<< HEAD
         ori_log_path = new_log_path
     return ori_log_path
+=======
+        return new_log_path
+>>>>>>> a889ecbe3bdfe8148de6f32e2698f48a19e863ac
 
 
 log_dir = 'logs'
 log_file = 'api.log'
 log_path = rename_file(log_dir, log_file)
 # 创建一个日志器
+<<<<<<< HEAD
 chat_logger = setup_logger(log_file=log_path)
+=======
+openai_logger = setup_logger(log_file=log_path)
+>>>>>>> a889ecbe3bdfe8148de6f32e2698f48a19e863ac
 chat_app = FastAPI()
 # 创建一个线程池
 executor = ThreadPoolExecutor(max_workers=10)

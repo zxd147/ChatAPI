@@ -24,7 +24,11 @@ from utils.log_utils import logger
 # # # 将处理器添加到日志器
 # api_logger.addHandler(file_handler)
 # 创建一个信号量，限制同时运行的任务数为10
+<<<<<<< HEAD
 semaphore = asyncio.Semaphore(4)
+=======
+
+>>>>>>> a889ecbe3bdfe8148de6f32e2698f48a19e863ac
 api_logger = logger
 
 
