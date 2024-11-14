@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -14,7 +15,7 @@ from pydantic import BaseModel
 
 from ChatGPT import Chat
 from openai_schema import SettingsRequest, SettingsResponse, ChatRequest, ChatResponse
-from utils.log_utils import setup_console_logger
+from utils.log_utils import setup_logger
 
 
 def init_app():
@@ -40,8 +41,25 @@ def configure_logging():
     return logger
 
 
+def rename_file(ori_dir, ori_file):
+    ori_log_path = os.path.join(ori_dir, ori_file)
+    if os.path.exists(ori_log_path):
+        # 获取文件的创建时间
+        creation_time = os.path.getctime(ori_log_path)
+        # 将创建时间格式化为字符串
+        formatted_time = datetime.fromtimestamp(creation_time).strftime("%Y%m%d_%H%M%S")
+        # 构建新的文件路径
+        new_log_path = os.path.join(ori_dir, f'{formatted_time}_{ori_file}')
+        os.rename(ori_log_path, new_log_path)
+        ori_log_path = new_log_path
+    return ori_log_path
+
+
+log_dir = 'logs'
+log_file = 'api.log'
+log_path = rename_file(log_dir, log_file)
 # 创建一个日志器
-chat_logger = setup_console_logger(level='INFO')
+chat_logger = setup_logger(log_file=log_path)
 chat_app = FastAPI()
 # 创建一个线程池
 executor = ThreadPoolExecutor(max_workers=10)
@@ -199,4 +217,4 @@ async def chat_completions(request: ChatRequest):
 if __name__ == '__main__':
     chat = init_app()
     # uvicorn.run(chat_app, host='0.0.0.0', port=8090, workers=2, limit_concurrency=4, limit_max_requests=100)
-    uvicorn.run(chat_app, host='0.0.0.0', port=8091)
+    uvicorn.run(chat_app, host='0.0.0.0', port=8090)
