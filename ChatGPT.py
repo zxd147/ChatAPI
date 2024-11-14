@@ -33,7 +33,7 @@ if os.path.exists(log_path):
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     new_log_path = f'{log_dir}/{current_time}_{log_file}'
     os.rename(log_path, new_log_path)
-api_logger = setup_file_logger(__file__, log_path)
+api_logger = setup_file_logger(log_path)
 
 
 class Chat:

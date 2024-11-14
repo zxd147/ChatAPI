@@ -52,21 +52,21 @@ def setup_console_logger(level="INFO"):
     return logger
 
 
-def setup_file_logger(name="file", log_file="file.log", level="INFO"):
+def setup_file_logger(log_file="file.log", level="INFO"):
     """设置文件日志"""
     logger.remove()  # 移除默认的日志输出
     logger.add(log_file, level=level, format=log_format, backtrace=True,
-               diagnose=True, name=name)
+               diagnose=True)
     return logger
 
 
-def setup_console_and_file_logger(name="console_and_file", log_file="file.log", level="INFO"):
+def setup_console_and_file_logger(log_file="file.log", level="INFO"):
     """设置同时输出到控制台和文件的日志"""
     logger.remove()  # 移除默认的日志输出
     logger.add(sys.stdout, level=level, format=log_format, backtrace=True,
                diagnose=True)
     logger.add(log_file, level=level, format=log_format, backtrace=True,
-               diagnose=True, name=name)
+               diagnose=True)
     return logger
 
 
