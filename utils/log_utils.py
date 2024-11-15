@@ -46,9 +46,9 @@ def configure_logging():
 
 def setup_logger(log_file="file.log", console_level="INFO", file_level="DEBUG"):
     logger.add(sys.stdout, level=console_level, format=log_format, backtrace=True, diagnose=True,
-               filter=lambda record: record["level"].name == "INFO")
+               filter=lambda record: record["level"].name != file_level)
     logger.add(log_file, level=file_level, format=log_format, backtrace=True, diagnose=True,
-               filter=lambda record: record["level"].name == "DEBUG")
+               filter=lambda record: record["level"].name != console_level)
     return logger
 
 

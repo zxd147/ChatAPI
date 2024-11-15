@@ -102,7 +102,7 @@ class Chat:
         param['variables']['name'] = sno
         param['messages'] = messages
         logs = f"FastGPT request param: \n{json.dumps(param, ensure_ascii=False, indent=None)}\n"
-        api_logger.info(logs)
+        api_logger.debug(logs)
         answer = ''
         response_data = ''
         async with semaphore:  # 整个函数的执行都受到信号量的控制
@@ -148,7 +148,7 @@ class Chat:
             answer = answer[2:].strip()  # 去除前两个字符
         if answer != '':
             logs = f'{messages}, response_data: ---\n{response_data}\n---'
-            api_logger.info(logs)
+            api_logger.debug(logs)
             user_record = {"role": "user", "content": query}
             assistant_record = {"role": "assistant", "content": answer}
             self.add_history(user_record)
@@ -173,7 +173,7 @@ class Chat:
         messages = [{"role": "user", "content": query}]
         param['messages'] = self.history + messages
         logs = f"GraphRAG request param: \n{json.dumps(param, ensure_ascii=False, indent=None)}\n"
-        api_logger.info(logs)
+        api_logger.debug(logs)
         answer = ''
         response_data = ''
         async with semaphore:  # 整个函数的执行都受到信号量的控制
@@ -224,7 +224,7 @@ class Chat:
         answer = re.sub(pattern, '', answer)
         if answer != '':
             logs = f'{messages}, response_data: ---\n{response_data}\n---'
-            api_logger.info(logs)
+            api_logger.debug(logs)
             user_record = {"role": "user", "content": query}
             assistant_record = {"role": "assistant", "content": answer}
             self.add_history(user_record)
@@ -251,14 +251,14 @@ class Chat:
         param['history_len'] = self.history_len
         param['knowledge_base_name'] = self.current_user_info['knowledge_base']
         logs = f"LangChain Request param: \n{json.dumps(param, ensure_ascii=False, indent=None)}\n"
-        api_logger.info(logs)
+        api_logger.debug(logs)
         answer = ''
         response_data = ''
         response = requests.post(chat_url, headers=headers, data=json.dumps(param))
         # 检查请求是否成功
         if response.status_code == 200:
             result = response.json()
-            api_logger.info(result)
+            api_logger.debug(result)
             code = 0
             messages = 'ChatGPT Response session successfully'
             answer = result["answer"] if self.current_chat_mode == "knowledge_base" else result["text"]

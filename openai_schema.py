@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field, ConfigDict
 
 class OpenAIBaseModel(BaseModel):
     # OpenAI API does not allow extra fields
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="allow")
 
 
 class ModelCard(OpenAIBaseModel):
@@ -81,7 +81,7 @@ class SettingsRequest(OpenAIBaseModel):
     sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
     uid: Union[int, str]
     channel: Literal['FastGPT', 'GraphRAG', 'LangChain'] = 'FastGPT'
-    model: Literal['Qwen2.5-7B-Instruct', 'Qwen2-7B-Instruct', 'ChatGLM-6B'] = 'Qwen2.5-7B-Instruct'
+    model: Literal['Qwen2.5-7B-Instruct', 'Qwen2.5-7B-Instruct', 'ChatGLM-6B'] = 'Qwen2.5-7B-Instruct'
     mode: Literal['knowledge_base', 'direct', 'local', 'global', 'full'] = 'knowledge_base'
     knowledge_base: Literal['zyy', 'guangxin', 'dentistry', 'test'] = 'dentistry'
     stream: bool = False
@@ -96,7 +96,7 @@ class SettingsResponse(OpenAIBaseModel):
 
 
 class ChatRequest(OpenAIBaseModel):
-    model: str = None
+    model: str = 'Qwen2.5-7B-Instruct'
     sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
     uid: Optional[Union[int, str]] = 'null'
     stream: bool = None
@@ -118,7 +118,7 @@ class ChatCompletionRequest(OpenAIBaseModel):
     uid: Optional[Union[int, str]] = 'null'
     query: str = ''
 
-    model: Optional[str] = None
+    model: Optional[str] = 'Qwen2.5-7B-Instruct'
     stream: Optional[bool] = None
     # messages: List[dict[str, str]] = []
     messages: List[ChatMessage] = []
