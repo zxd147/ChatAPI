@@ -1,18 +1,921 @@
 {
-    "current_user_id": "1720777958",
+    "current_user_id": "1727324966",
     "all_user_info": {
         "admin": {
             "uid": "admin",
-            "channel": "FastGPT",
-            "models": "Qwen2",
+            "channel": "LangChain",
+            "model": "ChatGLM-6B",
             "mode": "knowledge_base",
+            "stream": false,
             "conversation_id": [
-                "1024"
+                "1024",
+                "6d30c260"
             ],
-            "knowledge_base": "guangxin",
-            "model_name": "ChatGLM-6B",
-            "project_type": "1"
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1717484722": {
+            "uid": "1717484722",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "048e23b9"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1724051976": {
+            "uid": "1724051976",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "3198b138"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724061146": {
+            "uid": "1724061146",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "37afcfef"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724061247": {
+            "uid": "1724061247",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "9f486507"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724061380": {
+            "uid": "1724061380",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "28868114"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724116488": {
+            "uid": "1724116488",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "24918a81"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724125667": {
+            "uid": "1724125667",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "284f55ec"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724136558": {
+            "uid": "1724136558",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "e0278a08"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724139371": {
+            "uid": "1724139371",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "7af05fb7"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724139446": {
+            "uid": "1724139446",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "5955c6b3"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724139770": {
+            "uid": "1724139770",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "7c27f0f2"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724140618": {
+            "uid": "1724140618",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "693e5b49"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724140994": {
+            "uid": "1724140994",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "c5b9f7a8"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724141455": {
+            "uid": "1724141455",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "4a35810d"
+            ],
+            "knowledge_base": "hengsha",
+            "project_type": 0
+        },
+        "1724227165": {
+            "uid": "1724227165",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "b8a5918d"
+            ],
+            "knowledge_base": "hengsha",
+            "project_type": 0
+        },
+        "1724227292": {
+            "uid": "1724227292",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "de0f75b7"
+            ],
+            "knowledge_base": "hengsha",
+            "project_type": 0
+        },
+        "1724229115": {
+            "uid": "1724229115",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "6e55b992"
+            ],
+            "knowledge_base": "hengsha",
+            "project_type": 0
+        },
+        "1724287582": {
+            "uid": "1724287582",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "d4ad5e04"
+            ],
+            "knowledge_base": "hengsha",
+            "project_type": 0
+        },
+        "1724294304": {
+            "uid": "1724294304",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "c20427f6"
+            ],
+            "knowledge_base": "hengsha",
+            "project_type": 0
+        },
+        "zxd": {
+            "uid": "zxd",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": false,
+            "conversation_id": [
+                "f2b18465"
+            ],
+            "knowledge_base": "dentistry",
+            "project_type": 1
+        },
+        "1724654668": {
+            "uid": "1724654668",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "f4e4b3dc"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724661019": {
+            "uid": "1724661019",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "284f569a"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724666446": {
+            "uid": "1724666446",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "ee55d519"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724667708": {
+            "uid": "1724667708",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "e40ab98b"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724747035": {
+            "uid": "1724747035",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "20a1c424"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724747202": {
+            "uid": "1724747202",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "44df1eb2"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724835943": {
+            "uid": "1724835943",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "a334ede1"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724837344": {
+            "uid": "1724837344",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "eb5a7b8c"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1724893480": {
+            "uid": "1724893480",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "aa10e6b3"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1725334350": {
+            "uid": "1725334350",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "39d3eeeb"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1725335070": {
+            "uid": "1725335070",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "bc72e54f"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1725347730": {
+            "uid": "1725347730",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "e59ede60"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1725613976": {
+            "uid": "1725613976",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "54be4783"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1725872544": {
+            "uid": "1725872544",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "adc6fb2b"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1726300390": {
+            "uid": "1726300390",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "d14abc36"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1726126323": {
+            "uid": "1726126323",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "0af69d4b"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1726653993": {
+            "uid": "1726653993",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "8cf31b2a"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1725963714": {
+            "uid": "1725963714",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "3bc6b5c7"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1726657170": {
+            "uid": "1726657170",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "c298ff0a"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1726661086": {
+            "uid": "1726661086",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "220a119b"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1726710673": {
+            "uid": "1726710673",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "833b9eaf"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1726720431": {
+            "uid": "1726720431",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "65acca77"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1726726665": {
+            "uid": "1726726665",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "64f05147"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1726727798": {
+            "uid": "1726727798",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "d99291c0"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1726728352": {
+            "uid": "1726728352",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "acc2cbe4"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1726728373": {
+            "uid": "1726728373",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "373ec107"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1727174294": {
+            "uid": "1727174294",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "f07a23bc"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727250526": {
+            "uid": "1727250526",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "a894bbb0"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1727251087": {
+            "uid": "1727251087",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "e33e990b"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1727254030": {
+            "uid": "1727254030",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "58a4fe77"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1727254741": {
+            "uid": "1727254741",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "13613f54"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727254837": {
+            "uid": "1727254837",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "94810171"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1727282830": {
+            "uid": "1727282830",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "23d0a0a9"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727322690": {
+            "uid": "1727322690",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "6a0d3b2a"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727324966": {
+            "uid": "1727324966",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": false,
+            "conversation_id": [
+                "da5b913d"
+            ],
+            "knowledge_base": "dentistry",
+            "project_type": 0
+        },
+        "1727339585": {
+            "uid": "1727339585",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "aa37df5e"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727340523": {
+            "uid": "1727340523",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "498e3447"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "dentist": {
+            "uid": "dentist",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "d2900d32",
+                "f59bab01",
+                "53705239",
+                "bbb8892f"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1727411022": {
+            "uid": "1727411022",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "1c14f29b"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1727411494": {
+            "uid": "1727411494",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "5836865d"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727411718": {
+            "uid": "1727411718",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "5a970c2d"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727412005": {
+            "uid": "1727412005",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "ce86deb4"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727420581": {
+            "uid": "1727420581",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "be9b2184"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1727666003": {
+            "uid": "1727666003",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "6e9cc4f2"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1728700485": {
+            "uid": "1728700485",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "329c15d9"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1728699239": {
+            "uid": "1728699239",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "d234f509"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 0
+        },
+        "1729584627": {
+            "uid": "1729584627",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "3ac4dcc4"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1729672302": {
+            "uid": "1729672302",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "beafa55a"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1730427257": {
+            "uid": "1730427257",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "45b12bc7"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1730427436": {
+            "uid": "1730427436",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "59e20480"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1730807320": {
+            "uid": "1730807320",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "f43b7567"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1731373709": {
+            "uid": "1731373709",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "86037db6"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1112": {
+            "uid": "1112",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "3bcc9417"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1731512009": {
+            "uid": "1731512009",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": true,
+            "conversation_id": [
+                "188a65de"
+            ],
+            "knowledge_base": "zyy",
+            "project_type": 1
+        },
+        "1731634492": {
+            "uid": "1731634492",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge_base",
+            "stream": false,
+            "conversation_id": [
+                "1e72e0ea"
+            ],
+            "knowledge_base": "dentistry",
+            "project_type": 1
         }
     }
 }
-
