@@ -10,7 +10,7 @@ import requests
 from datetime import datetime
 from seg_sentences import split_text
 from update_load_config import load_config, update_config
-from utils.log_utils import logger
+from utils.log_utils import get_loger
 
 
 # # 创建一个日志器
@@ -25,7 +25,7 @@ from utils.log_utils import logger
 # api_logger.addHandler(file_handler)
 # 创建一个信号量，限制同时运行的任务数为10
 semaphore = asyncio.Semaphore(4)
-api_logger = logger
+api_logger = get_loger()
 
 
 class Chat:

@@ -15,7 +15,7 @@ from pydantic import BaseModel
 
 from ChatGPT import Chat
 from openai_schema import SettingsRequest, SettingsResponse, ChatRequest, ChatResponse
-from utils.log_utils import setup_logger
+from utils.log_utils import setup_logger, get_loger
 
 
 def init_app():
@@ -55,11 +55,10 @@ def rename_file(ori_dir, ori_file):
     return ori_log_path
 
 
-log_dir = 'logs'
-log_file = 'api.log'
-log_path = rename_file(log_dir, log_file)
+log_path = os.path.join('logs', 'api.log')
 # 创建一个日志器
-chat_logger = setup_logger(log_file=log_path)
+setup_logger(log_type="console_file", log_file=log_path)
+chat_logger = get_loger()
 chat_app = FastAPI()
 # 创建一个线程池
 executor = ThreadPoolExecutor(max_workers=10)
