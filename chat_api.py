@@ -10,8 +10,11 @@ import psutil
 import torch
 import uvicorn
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
 from pydantic import BaseModel
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request as StarletteRequest
 
 from ChatGPT import Chat
 from openai_schema import SettingsRequest, SettingsResponse, ChatRequest, ChatResponse
@@ -55,13 +58,36 @@ def rename_file(ori_dir, ori_file):
     return ori_log_path
 
 
+class BasicAuthMiddleware(BaseHTTPMiddleware):
+    def __init__(self, app, secret_key: str):
+        super().__init__(app)
+        self.required_credentials = secret_key
+
+    async def dispatch(self, request: StarletteRequest, call_next):
+        authorization: str = request.headers.get('Authorization')
+        if authorization and authorization.startswith('Bearer '):
+            provided_credentials = authorization.split(' ')[1]
+            # 比较提供的令牌和所需的令牌
+            if provided_credentials == self.required_credentials:
+                return await call_next(request)
+        # 返回一个带有自定义消息的JSON响应
+        return JSONResponse(
+            status_code=400,
+            content={"detail": "Unauthorized: Invalid or missing credentials"},
+            headers={'WWW-Authenticate': 'Bearer realm="Secure Area"'}
+        )
+
+
 log_path = os.path.join('logs', 'api.log')
 # 创建一个日志器
 setup_logger(log_type="console_file", log_file=log_path)
 chat_logger = get_loger()
-chat_app = FastAPI()
 # 创建一个线程池
 executor = ThreadPoolExecutor(max_workers=10)
+chat_app = FastAPI()
+secret_key = os.getenv('CHAT-API-SECRET-KEY', 'sk-chat-api')
+chat_app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'], )
+chat_app.add_middleware(BasicAuthMiddleware, secret_key=secret_key)
 
 
 # 将 Pydantic 模型实例转换为 JSON 字符串
