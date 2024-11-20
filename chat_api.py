@@ -87,7 +87,7 @@ executor = ThreadPoolExecutor(max_workers=10)
 chat_app = FastAPI()
 secret_key = os.getenv('CHAT-API-SECRET-KEY', 'sk-chat-api')
 chat_app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'], )
-# chat_app.add_middleware(BasicAuthMiddleware, secret_key=secret_key)
+chat_app.add_middleware(BasicAuthMiddleware, secret_key=secret_key)
 
 
 # 将 Pydantic 模型实例转换为 JSON 字符串
