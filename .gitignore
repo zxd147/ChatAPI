@@ -19,6 +19,7 @@ test*
 output*
 demo.py
 exam.py
-
+Docker/*
+!Docker/example.Dockerfile
 
 
