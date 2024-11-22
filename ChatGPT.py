@@ -101,7 +101,7 @@ class Chat:
         param['variables']['uid'] = uid
         param['variables']['name'] = sno
         param['messages'] = messages
-        logs = f"FastGPT request param: \n{json.dumps(param, ensure_ascii=False, indent=None)}\n"
+        logs = f"FastGPT request param: ---\n{json.dumps(param, ensure_ascii=False, indent=None)}\n---"
         api_logger.debug(logs)
         answer = ''
         response_data = ''
@@ -147,7 +147,7 @@ class Chat:
         if answer.startswith("0:") or answer.startswith("1:"):
             answer = answer[2:].strip()  # 去除前两个字符
         if answer != '':
-            logs = f'{messages}, response_data: ---\n{response_data}\n---'
+            logs = f'{messages}, response_data: ===\n{response_data}\n==='
             api_logger.debug(logs)
             user_record = {"role": "user", "content": query}
             assistant_record = {"role": "assistant", "content": answer}
@@ -159,7 +159,7 @@ class Chat:
             if code != -1:
                 code = -1
                 if response_data:
-                    messages = f"{messages}, ChatGPT response text is empty, response_data: ---\n{response_data}\n---"
+                    messages = f"{messages}, ChatGPT response text is empty, response_data: ===\n{response_data}\n==="
             api_logger.error(messages)
             print(messages)
         return code, messages, answer
@@ -172,7 +172,7 @@ class Chat:
         param.update(self.current_user_info)
         messages = [{"role": "user", "content": query}]
         param['messages'] = self.history + messages
-        logs = f"GraphRAG request param: \n{json.dumps(param, ensure_ascii=False, indent=None)}\n"
+        logs = f"GraphRAG request param: ---\n{json.dumps(param, ensure_ascii=False, indent=None)}\n---"
         api_logger.debug(logs)
         answer = ''
         response_data = ''
@@ -223,7 +223,7 @@ class Chat:
         # 使用正则表达式去掉形如[Data: Sources (0); Entities (1)], [Data: Entities（16、88、75、83、78、46、82、81、77）]']的数据
         answer = re.sub(pattern, '', answer)
         if answer != '':
-            logs = f'{messages}, response_data: ---\n{response_data}\n---'
+            logs = f'{messages}, response_data: ===\n{response_data}\n==='
             api_logger.debug(logs)
             user_record = {"role": "user", "content": query}
             assistant_record = {"role": "assistant", "content": answer}
@@ -235,7 +235,7 @@ class Chat:
             if code != -1:
                 code = -1
                 if response_data:
-                    messages = f"{messages}, ChatGPT response text is empty, response_data: ---\n{response_data}\n---"
+                    messages = f"{messages}, ChatGPT response text is empty, response_data: ===\n{response_data}\n==="
             api_logger.error(messages)
             print(messages)
         return code, messages, answer
@@ -250,7 +250,7 @@ class Chat:
         param['history'] = self.history
         param['history_len'] = self.history_len
         param['knowledge_base_name'] = self.current_user_info['knowledge_base']
-        logs = f"LangChain Request param: \n{json.dumps(param, ensure_ascii=False, indent=None)}\n"
+        logs = f"LangChain Request param: ---\n{json.dumps(param, ensure_ascii=False, indent=None)}\n---"
         api_logger.debug(logs)
         answer = ''
         response_data = ''
