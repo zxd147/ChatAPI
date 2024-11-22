@@ -5,7 +5,7 @@
             "uid": "admin",
             "channel": "LangChain",
             "model": "ChatGLM-6B",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": false,
             "conversation_id": [
                 "1024",
@@ -18,7 +18,7 @@
             "uid": "1717484722",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "048e23b9"
@@ -30,7 +30,7 @@
             "uid": "1724051976",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "3198b138"
@@ -42,7 +42,7 @@
             "uid": "1724061146",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "37afcfef"
@@ -54,7 +54,7 @@
             "uid": "1724061247",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "9f486507"
@@ -66,7 +66,7 @@
             "uid": "1724061380",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "28868114"
@@ -78,7 +78,7 @@
             "uid": "1724116488",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "24918a81"
@@ -90,7 +90,7 @@
             "uid": "1724125667",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "284f55ec"
@@ -102,7 +102,7 @@
             "uid": "1724136558",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "e0278a08"
@@ -114,7 +114,7 @@
             "uid": "1724139371",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "7af05fb7"
@@ -126,7 +126,7 @@
             "uid": "1724139446",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "5955c6b3"
@@ -138,7 +138,7 @@
             "uid": "1724139770",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "7c27f0f2"
@@ -150,7 +150,7 @@
             "uid": "1724140618",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "693e5b49"
@@ -162,7 +162,7 @@
             "uid": "1724140994",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "c5b9f7a8"
@@ -174,7 +174,7 @@
             "uid": "1724141455",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "4a35810d"
@@ -186,7 +186,7 @@
             "uid": "1724227165",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "b8a5918d"
@@ -198,7 +198,7 @@
             "uid": "1724227292",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "de0f75b7"
@@ -210,7 +210,7 @@
             "uid": "1724229115",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "6e55b992"
@@ -222,7 +222,7 @@
             "uid": "1724287582",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "d4ad5e04"
@@ -234,7 +234,7 @@
             "uid": "1724294304",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "c20427f6"
@@ -246,7 +246,7 @@
             "uid": "zxd",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": false,
             "conversation_id": [
                 "f2b18465"
@@ -258,7 +258,7 @@
             "uid": "1724654668",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "f4e4b3dc"
@@ -270,7 +270,7 @@
             "uid": "1724661019",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "284f569a"
@@ -282,7 +282,7 @@
             "uid": "1724666446",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "ee55d519"
@@ -294,7 +294,7 @@
             "uid": "1724667708",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "e40ab98b"
@@ -306,7 +306,7 @@
             "uid": "1724747035",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "20a1c424"
@@ -318,7 +318,7 @@
             "uid": "1724747202",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "44df1eb2"
@@ -330,7 +330,7 @@
             "uid": "1724835943",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "a334ede1"
@@ -342,7 +342,7 @@
             "uid": "1724837344",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "eb5a7b8c"
@@ -354,7 +354,7 @@
             "uid": "1724893480",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "aa10e6b3"
@@ -366,7 +366,7 @@
             "uid": "1725334350",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "39d3eeeb"
@@ -378,7 +378,7 @@
             "uid": "1725335070",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "bc72e54f"
@@ -390,7 +390,7 @@
             "uid": "1725347730",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "e59ede60"
@@ -402,7 +402,7 @@
             "uid": "1725613976",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "54be4783"
@@ -414,7 +414,7 @@
             "uid": "1725872544",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "adc6fb2b"
@@ -426,7 +426,7 @@
             "uid": "1726300390",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "d14abc36"
@@ -438,7 +438,7 @@
             "uid": "1726126323",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "0af69d4b"
@@ -450,7 +450,7 @@
             "uid": "1726653993",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "8cf31b2a"
@@ -462,7 +462,7 @@
             "uid": "1725963714",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "3bc6b5c7"
@@ -474,7 +474,7 @@
             "uid": "1726657170",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "c298ff0a"
@@ -486,7 +486,7 @@
             "uid": "1726661086",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "220a119b"
@@ -498,7 +498,7 @@
             "uid": "1726710673",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "833b9eaf"
@@ -510,7 +510,7 @@
             "uid": "1726720431",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "65acca77"
@@ -522,7 +522,7 @@
             "uid": "1726726665",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "64f05147"
@@ -534,7 +534,7 @@
             "uid": "1726727798",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "d99291c0"
@@ -546,7 +546,7 @@
             "uid": "1726728352",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "acc2cbe4"
@@ -558,7 +558,7 @@
             "uid": "1726728373",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "373ec107"
@@ -570,7 +570,7 @@
             "uid": "1727174294",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "f07a23bc"
@@ -582,7 +582,7 @@
             "uid": "1727250526",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "a894bbb0"
@@ -594,7 +594,7 @@
             "uid": "1727251087",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "e33e990b"
@@ -606,7 +606,7 @@
             "uid": "1727254030",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "58a4fe77"
@@ -618,7 +618,7 @@
             "uid": "1727254741",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "13613f54"
@@ -630,7 +630,7 @@
             "uid": "1727254837",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "94810171"
@@ -642,7 +642,7 @@
             "uid": "1727282830",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "23d0a0a9"
@@ -654,7 +654,7 @@
             "uid": "1727322690",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "6a0d3b2a"
@@ -666,7 +666,7 @@
             "uid": "1727324966",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": false,
             "conversation_id": [
                 "da5b913d"
@@ -678,7 +678,7 @@
             "uid": "1727339585",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "aa37df5e"
@@ -690,7 +690,7 @@
             "uid": "1727340523",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "498e3447"
@@ -702,7 +702,7 @@
             "uid": "dentist",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "d2900d32",
@@ -717,7 +717,7 @@
             "uid": "1727411022",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "1c14f29b"
@@ -729,7 +729,7 @@
             "uid": "1727411494",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "5836865d"
@@ -741,7 +741,7 @@
             "uid": "1727411718",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "5a970c2d"
@@ -753,7 +753,7 @@
             "uid": "1727412005",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "ce86deb4"
@@ -765,7 +765,7 @@
             "uid": "1727420581",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "be9b2184"
@@ -777,7 +777,7 @@
             "uid": "1727666003",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "6e9cc4f2"
@@ -789,7 +789,7 @@
             "uid": "1728700485",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "329c15d9"
@@ -801,7 +801,7 @@
             "uid": "1728699239",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "d234f509"
@@ -813,7 +813,7 @@
             "uid": "1729584627",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "3ac4dcc4"
@@ -825,7 +825,7 @@
             "uid": "1729672302",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "beafa55a"
@@ -837,7 +837,7 @@
             "uid": "1730427257",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "45b12bc7"
@@ -849,7 +849,7 @@
             "uid": "1730427436",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "59e20480"
@@ -861,7 +861,7 @@
             "uid": "1730807320",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "f43b7567"
@@ -873,7 +873,7 @@
             "uid": "1731373709",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "86037db6"
@@ -885,7 +885,7 @@
             "uid": "1112",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "3bcc9417"
@@ -897,7 +897,7 @@
             "uid": "1731512009",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": true,
             "conversation_id": [
                 "188a65de"
@@ -909,7 +909,7 @@
             "uid": "1731634492",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge_base",
+            "mode": "knowledge",
             "stream": false,
             "conversation_id": [
                 "1e72e0ea"

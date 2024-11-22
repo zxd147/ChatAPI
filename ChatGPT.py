@@ -261,7 +261,7 @@ class Chat:
             api_logger.debug(result)
             code = 0
             messages = 'ChatGPT Response session successfully'
-            answer = result["answer"] if self.current_chat_mode == "knowledge_base" else result["text"]
+            answer = result["answer"] if self.current_chat_mode == "knowledge" else result["text"]
             user_record = {"role": "user", "content": query}
             assistant_record = {"role": "assistant", "content": answer}
             self.add_history(user_record)
@@ -346,9 +346,9 @@ class Chat:
             code = 1
             messages = "Unsupported chat mode. Please use 'FastGPT', 'GraphRAG' or 'LangChain'."
             return code, messages
-        elif settings_args['mode'] not in ["direct", "knowledge_base", "local", "global", "full"]:
+        elif settings_args['mode'] not in ["direct", "knowledge", "local", "global", "full"]:
             code = 1
-            messages = "Unsupported chat channel. Please use 'direct', 'knowledge_base', 'local', 'global' or 'full'."
+            messages = "Unsupported chat channel. Please use 'direct', 'knowledge', 'local', 'global' or 'full'."
             return code, messages
         elif settings_args['model'] not in self.llm_list:
             code = 1

@@ -5,7 +5,7 @@
                 "Qwen2.5-7B-Instruct"
             ],
             "Qwen2.5-7B-Instruct": {
-                "knowledge_base": {
+                "knowledge": {
                     "chat_url": "http://192.168.0.244:8012/api/v1/chat/completions",
                     "headers": {
                         "Authorization": "Bearer fastgpt-hc6kvezCaT7Ylr5RHvpQ5SPWoUpftXP6qfyykZz0DvBzvy7hJvWh03C9zKMNF ",
@@ -51,7 +51,7 @@
                 "Qwen2.5-7B-Instruct"
             ],
             "Qwen2.5-7B-Instruct": {
-                "knowledge_base": {
+                "knowledge": {
                     "chat_url": "http://192.168.0.244:8013/v1/chat/completions",
                     "headers": {
                         "Content-Type": "application/json"
@@ -106,7 +106,7 @@
                         "temperature": 0.3
                     }
                 },
-                "knowledge_base": {
+                "knowledge": {
                     "chat_url": "http://192.168.0.246:7861/chat/knowledge_base_chat",
                     "headers": {
                         "Content-Type": "application/json"
@@ -131,7 +131,7 @@
     },
     "current_chat_channel": "FastGPT",
     "current_chat_llm": "Qwen2.5-7B-Instruct",
-    "current_chat_mode": "knowledge_base",
+    "current_chat_mode": "knowledge",
     "max_tokens": 60,
     "min_tokens": 20
 }
