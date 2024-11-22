@@ -14,7 +14,7 @@ from utils.log_utils import get_loger
 
 
 # # 创建一个日志器
-# api_logger = logging.getLogger('GPT')
+# api_logger = logging.getLogger('LLM')
 # api_logger.setLevel(logging.INFO)
 # # 创建一个文件处理器并设置级别和格式
 # file_handler = logging.FileHandler(log_path)
@@ -81,7 +81,9 @@ class Chat:
         messages = completions_args['messages']
         query = completions_args['query'] or completions_args['content']
         chat_url = self.mode_conf['chat_url']
+        knowledge_base = self.current_user_info['knowledge_base']
         headers = copy.deepcopy(self.mode_conf['headers'])
+        headers['Authorization'] = self.mode_conf['authorization'][knowledge_base]
         param = copy.deepcopy(self.mode_conf['param'])
         model = self.current_user_info['model']
         stream = self.current_user_info['stream']
@@ -352,7 +354,7 @@ class Chat:
             return code, messages
         elif settings_args['model'] not in self.llm_list:
             code = 1
-            messages = f"GPT config update fail, {settings_args['channel']} doesn't support the LLM {settings_args['model']}, please choose in {self.llm_list}"
+            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the Model{settings_args['model']}, please choose in {self.llm_list}"
             return code, messages
         # 更新配置文件
         update_config(self.user_info_path, self.user_info)
@@ -396,7 +398,7 @@ class Chat:
         self.mode_conf = self.gpt_config['channel'][self.current_chat_channel][self.current_chat_llm][
             self.current_chat_mode]
         self.history_len = self.mode_conf['history_len'] * 2
-        messages = "GPT config update successfully"
+        messages = "LLM config update successfully"
         return messages
 
 
