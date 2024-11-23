@@ -219,11 +219,15 @@ class Chat:
                         messages = f'GraphRAG response failed with status code: {response.status}. '
         if answer.startswith("0:") or answer.startswith("1:"):
             answer = answer[2:].strip()  # 去除前两个字符
-        # 定义正则表达式
-        # pattern = r'\[Data: Sources \(.*?\); Entities \(.*?\)\]'
-        pattern = r'\[Data: (Entities|Sources)[^\]]*\]'  # 使用正则表达式去掉匹配的数据
-        # 使用正则表达式去掉形如[Data: Sources (0); Entities (1)], [Data: Entities（16、88、75、83、78、46、82、81、77）]']的数据
-        answer = re.sub(pattern, '', answer)
+        answer = answer.split('[Data:')[0]
+        # # 定义正则表达式
+        # # pattern = r'\[Data: Sources \(.*?\); Entities \(.*?\)\]'
+        # # pattern = r'\[Data: (Entities|Sources)[^\]]*\]'
+        # # pattern = r'\[Data:.*?\]'
+        # pattern = r'\[Data:.*'  # 使用正则表达式去掉匹配的数据
+        # # 使用正则表达式去掉形如[Data: Sources (0); Entities (1)], [Data: Entities（16、88、75、83、78、46、82、81、77）]
+        # # 和[Data: 环保政策 (945);', ' 强制垃圾分类 (1226); 科技支持 (2188)]的数据
+        # answer = re.sub(pattern, '', answer)
         if answer != '':
             logs = f'{messages}, response_data: ===\n{response_data}\n==='
             api_logger.debug(logs)
