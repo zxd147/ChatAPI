@@ -24,8 +24,8 @@
                         }
                     },
                     "authorization": {
-                        "zyy": "fastgpt-akLyVjSwTDCKnma0MdAKelmcPgeEpJ8bcB2HSlNZ0giyhrze6APjWoY",
-                        "dentistry": "fastgpt-hc6kvezCaT7Ylr5RHvpQ5SPWoUpftXP6qfyykZz0DvBzvy7hJvWh03C9zKMNF"
+                        "zyy": "Bearer fastgpt-akLyVjSwTDCKnma0MdAKelmcPgeEpJ8bcB2HSlNZ0giyhrze6APjWoY",
+                        "dentistry": "Bearer fastgpt-hc6kvezCaT7Ylr5RHvpQ5SPWoUpftXP6qfyykZz0DvBzvy7hJvWh03C9zKMNF"
                     }
                 },
                 "direct": {
@@ -48,8 +48,8 @@
                         }
                     },
                     "authorization": {
-                        "zyy": "fastgpt-y4rsDwlnrppQPKfRR2AN40jVx6mdCeeOfRtus7TyA5s4FgPUMko91nvSA6L",
-                        "dentistry": "fastgpt-ey4ouzBBj1PZf7EkKMHSZsfpqNAyCG1fH6LL6xak5DPhvrQmyBgzAFtNb"
+                        "zyy": "Bearer fastgpt-y4rsDwlnrppQPKfRR2AN40jVx6mdCeeOfRtus7TyA5s4FgPUMko91nvSA6L",
+                        "dentistry": "Bearer fastgpt-ey4ouzBBj1PZf7EkKMHSZsfpqNAyCG1fH6LL6xak5DPhvrQmyBgzAFtNb"
                     }
                 }
             }
@@ -68,7 +68,7 @@
                     "param": {
                         "model": "Qwen2.5-7B-Instruct",
                         "mode": "local",
-                        "knowledge_base:": "dentistry",
+                        "knowledge_base": "dentistry",
                         "messages": [],
                         "temperature": 1.0,
                         "stream": true
@@ -83,7 +83,7 @@
                     "param": {
                         "model": "Qwen2.5-7B-Instruct",
                         "mode": "global",
-                        "knowledge_base:": "dentistry",
+                        "knowledge_base": "dentistry",
                         "messages": [],
                         "temperature": 1.0,
                         "stream": true
@@ -98,7 +98,7 @@
                     "param": {
                         "model": "Qwen2.5-7B-Instruct",
                         "mode": "full",
-                        "knowledge_base:": "dentistry",
+                        "knowledge_base": "dentistry",
                         "messages": [],
                         "temperature": 1.0,
                         "stream": true
@@ -152,9 +152,9 @@
             }
         }
     },
-    "current_chat_channel": "FastGPT",
+    "current_chat_channel": "GraphRAG",
     "current_chat_llm": "Qwen2.5-7B-Instruct",
-    "current_chat_mode": "knowledge",
+    "current_chat_mode": "local",
     "max_tokens": 60,
     "min_tokens": 20
 }
