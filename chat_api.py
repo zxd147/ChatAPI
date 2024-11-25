@@ -23,7 +23,7 @@ from utils.log_utils import setup_logger, get_loger
 
 def init_app():
     logs = f"Service started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-    gpt_config_path = 'gpt_conf.json'
+    gpt_config_path = 'llm_conf.json'
     user_info_path = 'user_info.json'
     chat_instance = Chat(gpt_config_path, user_info_path)
     chat_logger.info(logs)
@@ -192,6 +192,14 @@ async def chat_settings(request: SettingsRequest):
         logs = f"Completions response  error: {error_message.model_dump()}"
         chat_logger.error(logs)
         return JSONResponse(status_code=400, content=error_message.model_dump())
+    except ValueError as ve:
+        error_message = ChatResponse(
+            code=-1,
+            messages=f"ValueError, Invalid value encountered: {str(ve)}"
+        )
+        logs = f"Completions response error: {error_message.model_dump()}"
+        chat_logger.error(logs)
+        return JSONResponse(status_code=422, content=error_message.model_dump())
     # except Exception as e:
     #     sno = request.sno
     #     error_message = SettingsResponse(
@@ -229,6 +237,14 @@ async def chat_completions(request: ChatRequest):
         logs = f"Completions response  error: {error_message.model_dump()}"
         chat_logger.error(logs)
         return JSONResponse(status_code=400, content=error_message.model_dump())
+    except ValueError as ve:
+        error_message = ChatResponse(
+            code=-1,
+            messages=f"ValueError, Invalid value encountered: {str(ve)}"
+        )
+        logs = f"Completions response error: {error_message.model_dump()}"
+        chat_logger.error(logs)
+        return JSONResponse(status_code=422, content=error_message.model_dump())
     # except Exception as e:
     #     error_message = ChatResponse(
     #         code=-1,

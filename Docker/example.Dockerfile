@@ -19,7 +19,7 @@ RUN git clone https://github.com/zxd147/ChatAPI ../Chat-API
 
 
 # 安装依赖
-RUN mv gpt_conf.json.example gpt_conf.json \
+RUN mv llm_conf.json.example llm_conf.json \
     && mv user_info.json.example user_info.json \
     && pip install -r ./requirements.txt \
     && pip cache purge

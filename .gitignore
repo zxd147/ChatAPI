@@ -1,6 +1,6 @@
 # 自定义目录/文件
 user_info.json
-gpt_conf.json
+llm_conf.json
 output.log
 /history/*
 !/history/

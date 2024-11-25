@@ -64,11 +64,11 @@ class Chat:
                 messages = self.clear_history()
                 answers = ['/reset']
                 return code, messages, answers
-            if self.current_chat_channel == "FastGPT":
+            if self.current_channel == "FastGPT":
                 code, messages, answer = await self.chat_with_fastgpt(completions_args)
-            elif self.current_chat_channel == "GraphRAG":
+            elif self.current_channel == "GraphRAG":
                 code, messages, answer = await self.chat_with_graphrag(completions_args)
-            # elif self.current_chat_channel == "LangChain":
+            # elif self.current_channel == "LangChain":
             else:
                 code, messages, answer = self.chat_with_langchain(completions_args)
         answers = split_text(answer, self.min_tokens, self.max_tokens, sentences=[])
@@ -83,7 +83,12 @@ class Chat:
         chat_url = self.mode_conf['chat_url']
         knowledge_base = self.current_user_info['knowledge_base']
         headers = copy.deepcopy(self.mode_conf['headers'])
-        headers['Authorization'] = self.mode_conf['authorization'][knowledge_base]
+        try:
+            headers['Authorization'] = self.mode_conf['authorization'][knowledge_base]
+        except KeyError as e:
+            msg = f"'knowledge_base' error：{e}"
+            api_logger.error(msg)
+            raise ValueError(msg)
         param = copy.deepcopy(self.mode_conf['param'])
         model = self.current_user_info['model']
         stream = self.current_user_info['stream']
@@ -267,7 +272,7 @@ class Chat:
             api_logger.debug(result)
             code = 0
             messages = 'ChatGPT Response session successfully'
-            answer = result["answer"] if self.current_chat_mode == "knowledge" else result["text"]
+            answer = result["answer"] if self.current_mode == "knowledge" else result["text"]
             user_record = {"role": "user", "content": query}
             assistant_record = {"role": "assistant", "content": answer}
             self.add_history(user_record)
@@ -347,18 +352,25 @@ class Chat:
             'project_type': settings_args['project_type'],
         }
         self.user_info['current_user_id'] = uid
-        self.llm_list = self.gpt_config['channel'][settings_args['channel']]['llm_list']
-        if settings_args['channel'] not in ["FastGPT", "GraphRAG", "LangChain"]:
+        self.channel_list = self.gpt_config['channel_list']
+        self.mode_list = self.gpt_config['channel'][settings_args['channel']]['mode_list']
+        self.model_list = self.gpt_config['channel'][settings_args['channel']]['model_list']
+        self.knowledge_base_list = self.gpt_config['channel'][settings_args['channel']]['knowledge_base_list']
+        if settings_args['channel'] not in self.channel_list:
             code = 1
-            messages = "Unsupported chat mode. Please use 'FastGPT', 'GraphRAG' or 'LangChain'."
+            messages = f"Unsupported channel. Please choose in {self.channel_list}."
             return code, messages
-        elif settings_args['mode'] not in ["direct", "knowledge", "local", "global", "full"]:
+        elif settings_args['mode'] not in self.mode_list:
             code = 1
-            messages = "Unsupported chat channel. Please use 'direct', 'knowledge', 'local', 'global' or 'full'."
+            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the mode {settings_args['mode']}, Please choose in {self.mode_list}."
             return code, messages
-        elif settings_args['model'] not in self.llm_list:
+        elif settings_args['model'] not in self.model_list:
             code = 1
-            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the Model{settings_args['model']}, please choose in {self.llm_list}"
+            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the model {settings_args['model']}, please choose in {self.model_list}"
+            return code, messages
+        elif settings_args['knowledge_base'] not in self.knowledge_base_list:
+            code = 1
+            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the knowledge_base {settings_args['knowledge_base']}, please choose in {self.knowledge_base_list}"
             return code, messages
         # 更新配置文件
         update_config(self.user_info_path, self.user_info)
@@ -379,12 +391,12 @@ class Chat:
 
     def update_gpt_conf(self):
         # 在gpt配置文件中更新对话模式
-        self.current_chat_channel = self.current_user_info['channel']
-        self.current_chat_llm = self.current_user_info['model']
-        self.current_chat_mode = self.current_user_info['mode']
-        self.gpt_config['current_chat_channel'] = self.current_chat_channel
-        self.gpt_config['current_chat_llm'] = self.current_chat_llm
-        self.gpt_config['current_chat_mode'] = self.current_chat_mode
+        self.current_channel = self.current_user_info['channel']
+        self.current_llm = self.current_user_info['model']
+        self.current_mode = self.current_user_info['mode']
+        self.gpt_config['current_channel'] = self.current_channel
+        self.gpt_config['current_llm'] = self.current_llm
+        self.gpt_config['current_mode'] = self.current_mode
         # 更新配置文件
         update_config(self.gpt_config_path, self.gpt_config)
         # 加载配置文件
@@ -394,13 +406,13 @@ class Chat:
 
     def _load_gpt_conf(self):
         self.gpt_config = load_config(self.gpt_config_path)  # 初始化配置
-        self.current_chat_channel = self.gpt_config['current_chat_channel']
-        self.current_chat_llm = self.gpt_config['current_chat_llm']
-        self.current_chat_mode = self.gpt_config['current_chat_mode']
+        self.current_channel = self.gpt_config['current_channel']
+        self.current_llm = self.gpt_config['current_llm']
+        self.current_mode = self.gpt_config['current_mode']
         self.min_tokens = self.gpt_config['min_tokens']
         self.max_tokens = self.gpt_config['max_tokens']
-        self.mode_conf = self.gpt_config['channel'][self.current_chat_channel][self.current_chat_llm][
-            self.current_chat_mode]
+        self.mode_conf = self.gpt_config['channel'][self.current_channel][self.current_llm][
+            self.current_mode]
         self.history_len = self.mode_conf['history_len'] * 2
         messages = "LLM config update successfully"
         return messages
