@@ -224,7 +224,7 @@ class Chat:
                         messages = f'GraphRAG response failed with status code: {response.status}. '
         if answer.startswith("0:") or answer.startswith("1:"):
             answer = answer[2:].strip()  # 去除前两个字符
-        answer = answer.split('[Data:')[0]
+        answer = answer.split('[Data')[0].split('[数据')[0]
         # # 定义正则表达式
         # # pattern = r'\[Data: Sources \(.*?\); Entities \(.*?\)\]'
         # # pattern = r'\[Data: (Entities|Sources)[^\]]*\]'
