@@ -112,45 +112,58 @@ class Chat:
         api_logger.debug(logs)
         answer = ''
         response_data = ''
-        async with semaphore:  # 整个函数的执行都受到信号量的控制
-            async with aiohttp.ClientSession() as session:
-                # 准备参数并发起请求
-                async with session.post(chat_url, headers=headers, data=json.dumps(param), timeout=10) as response:
-                    if response.status == 200:
-                        code = 0
-                        messages = 'FastGPT response session successfully'
-                        if response.content_type == 'application/json':
-                            response_data = await response.json()  # 如果是 JSON，直接解析
-                            answer = response_data['choices'][0]['message'].get('content', '')
-                            if isinstance(answer, list):
-                                answer = next(
-                                    (item['text']['content'] for item in answer if item.get('type') == 'text'), answer)
-                        elif response.content_type == 'text/event-stream':
-                            encoding = response.charset
-                            async for line in response.content:
-                                json_string = line.decode(encoding).strip().replace('data: ', '')
-                                response_data += json_string + '\n'
-                                if json_string == "[DONE]":
-                                    continue
-                                if json_string:  # 检查内容是否为空
-                                    try:
-                                        # 尝试解析为 JSON 对象
-                                        data = json.loads(json_string)
-                                        # 提取content
-                                        choice = data['choices'][0]
-                                        content = choice['delta'].get('content', '')
-                                        if content:  # 如果content不为空
-                                            answer += content  # 添加到最终内容中
-                                    except json.JSONDecodeError:
-                                        code = -1
-                                        messages = f"{messages}, JSONDecodeError, FastGPT Data Invalid JSON: {json_string}. "
-                                        api_logger.error(messages)
+        try:
+            async with semaphore:  # 整个函数的执行都受到信号量的控制
+                async with aiohttp.ClientSession() as session:
+                    # 准备参数并发起请求
+                    async with session.post(chat_url, headers=headers, data=json.dumps(param), timeout=10) as response:
+                        if response.status == 200:
+                            code = 0
+                            messages = 'FastGPT response session successfully'
+                            if response.content_type == 'application/json':
+                                response_data = await response.json()  # 如果是 JSON，直接解析
+                                answer = response_data['choices'][0]['message'].get('content', '')
+                                if isinstance(answer, list):
+                                    answer = next(
+                                        (item['text']['content'] for item in answer if item.get('type') == 'text'), answer)
+                            elif response.content_type == 'text/event-stream':
+                                encoding = response.charset
+                                async for line in response.content:
+                                    json_string = line.decode(encoding).strip().replace('data: ', '')
+                                    response_data += json_string + '\n'
+                                    if json_string == "[DONE]":
+                                        continue
+                                    if json_string:  # 检查内容是否为空
+                                        try:
+                                            # 尝试解析为 JSON 对象
+                                            data = json.loads(json_string)
+                                            # 提取content
+                                            choice = data['choices'][0]
+                                            content = choice['delta'].get('content', '')
+                                            if content:  # 如果content不为空
+                                                answer += content  # 添加到最终内容中
+                                        except json.JSONDecodeError:
+                                            code = -1
+                                            messages = f"{messages}, JSONDecodeError, FastGPT Data Invalid JSON: {json_string}. "
+                                            api_logger.error(messages)
+                            else:
+                                code = -1
+                                messages = f"{messages}, Unknown response.content_type: {response.content_type}"
                         else:
                             code = -1
-                            messages = f"{messages}, Unknown response.content_type: {response.content_type}"
-                    else:
-                        code = -1
-                        messages = f'FastGPT response failed with status code: {response.status}. '
+                            messages = f'FastGPT response failed with status code: {response.status}. '
+        except asyncio.TimeoutError as e:
+            messages = f'TimeoutError: {e}'
+            api_logger.error(messages)
+        except json.JSONDecodeError as e:
+            messages = f'JSONDecodeError: {e}'
+            api_logger.error(messages)
+        except KeyError as e:
+            messages = f'KeyError: {e}'
+            api_logger.error(messages)
+        except Exception as e:
+            messages = f'Unknown Error: {e}'
+            api_logger.error(messages)
         if answer.startswith("0:") or answer.startswith("1:"):
             answer = answer[2:].strip()  # 去除前两个字符
         if answer != '':
@@ -183,45 +196,58 @@ class Chat:
         api_logger.debug(logs)
         answer = ''
         response_data = ''
-        async with semaphore:  # 整个函数的执行都受到信号量的控制
-            async with aiohttp.ClientSession() as session:
-                # 准备参数并发起请求
-                async with session.post(chat_url, headers=headers, data=json.dumps(param), timeout=10) as response:
-                    if response.status == 200:
-                        code = 0
-                        messages = 'GraphRAG response session successfully'
-                        if response.content_type == 'application/json':
-                            response_data = await response.json()  # 如果是 JSON，直接解析
-                            answer = response_data['choices'][0]['message'].get('content', '')
-                            if isinstance(answer, list):
-                                answer = next(
-                                    (item['text']['content'] for item in answer if item.get('type') == 'text'), answer)
-                        elif response.content_type == 'text/event-stream':
-                            encoding = response.charset
-                            async for line in response.content:
-                                json_string = line.decode(encoding).strip().replace('data: ', '')
-                                response_data += json_string + '\n'
-                                if json_string == "[DONE]":
-                                    continue
-                                if json_string:  # 检查内容是否为空
-                                    try:
-                                        # 尝试解析为 JSON 对象
-                                        data = json.loads(json_string)
-                                        # 提取content
-                                        choice = data['choices'][0]
-                                        content = choice['delta'].get('content', '')
-                                        if content:  # 如果content不为空
-                                            answer += content  # 添加到最终内容中
-                                    except json.JSONDecodeError:
-                                        code = -1
-                                        messages = f"{messages}, JSONDecodeError, GraphRAG Data Invalid JSON: {json_string}. "
-                                        api_logger.error(messages)
+        try:
+            async with semaphore:  # 整个函数的执行都受到信号量的控制
+                async with aiohttp.ClientSession() as session:
+                    # 准备参数并发起请求
+                    async with session.post(chat_url, headers=headers, data=json.dumps(param), timeout=10) as response:
+                        if response.status == 200:
+                            code = 0
+                            messages = 'GraphRAG response session successfully'
+                            if response.content_type == 'application/json':
+                                response_data = await response.json()  # 如果是 JSON，直接解析
+                                answer = response_data['choices'][0]['message'].get('content', '')
+                                if isinstance(answer, list):
+                                    answer = next(
+                                        (item['text']['content'] for item in answer if item.get('type') == 'text'), answer)
+                            elif response.content_type == 'text/event-stream':
+                                encoding = response.charset
+                                async for line in response.content:
+                                    json_string = line.decode(encoding).strip().replace('data: ', '')
+                                    response_data += json_string + '\n'
+                                    if json_string == "[DONE]":
+                                        continue
+                                    if json_string:  # 检查内容是否为空
+                                        try:
+                                            # 尝试解析为 JSON 对象
+                                            data = json.loads(json_string)
+                                            # 提取content
+                                            choice = data['choices'][0]
+                                            content = choice['delta'].get('content', '')
+                                            if content:  # 如果content不为空
+                                                answer += content  # 添加到最终内容中
+                                        except json.JSONDecodeError:
+                                            code = -1
+                                            messages = f"{messages}, JSONDecodeError, GraphRAG Data Invalid JSON: {json_string}. "
+                                            api_logger.error(messages)
+                            else:
+                                code = -1
+                                messages = f"{messages}, Unknown response.content_type: {response.content_type}"
                         else:
                             code = -1
-                            messages = f"{messages}, Unknown response.content_type: {response.content_type}"
-                    else:
-                        code = -1
-                        messages = f'GraphRAG response failed with status code: {response.status}. '
+                            messages = f'GraphRAG response failed with status code: {response.status}. '
+        except asyncio.TimeoutError as e:
+            messages = f'TimeoutError: {e}'
+            api_logger.error(messages)
+        except json.JSONDecodeError as e:
+            messages = f'JSONDecodeError: {e}'
+            api_logger.error(messages)
+        except KeyError as e:
+            messages = f'KeyError: {e}'
+            api_logger.error(messages)
+        except Exception as e:
+            messages = f'Unknown Error: {e}'
+            api_logger.error(messages)
         if answer.startswith("0:") or answer.startswith("1:"):
             answer = answer[2:].strip()  # 去除前两个字符
         answer = answer.split('[Data')[0].split('[数据')[0]
