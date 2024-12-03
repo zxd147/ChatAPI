@@ -5,7 +5,7 @@ import json
 import uuid
 import aiohttp
 import asyncio
-import logging
+# import logging
 import requests
 from datetime import datetime
 from seg_sentences import split_text
@@ -29,22 +29,22 @@ api_logger = get_loger()
 
 
 class Chat:
-    def __init__(self, gpt_config_path, user_info_path):
-        self.gpt_config_path = gpt_config_path
+    def __init__(self, llm_config_path, user_info_path):
+        self.llm_config_path = llm_config_path
         self.user_info_path = user_info_path
-        self.init_messages = " * init successfully: " + self._load_gpt_conf() + ", " + self._load_user_info()
+        self.init_messages = " * init successfully: " + self._load_llm_conf() + ", " + self._load_user_info()
 
     def load_user_info(self):
         return self._load_user_info()
 
-    def load_gpt_conf(self):
-        return self._load_gpt_conf()
+    def load_llm_conf(self):
+        return self._load_llm_conf()
 
     async def set(self, settings_args):
         user_code, user_messages = self.update_user_info(settings_args)
-        gpt_code, gpt_messages = self.update_gpt_conf()
-        messages = user_messages + ", " + gpt_messages
-        code = user_code or gpt_code
+        llm_code, llm_messages = self.update_llm_conf()
+        messages = user_messages + ", " + llm_messages
+        code = user_code or llm_code
         return code, messages
 
     async def completions(self, completions_args):
@@ -57,7 +57,7 @@ class Chat:
         else:
             if uid != self.current_user_id:
                 self.current_user_info = self.user_info['all_user_info'][completions_args['uid']]
-                self.update_gpt_conf()
+                self.update_llm_conf()
                 self.update_user_info(self.current_user_info)
             if query in ["/reset", "清空对话", "清空对话。"]:
                 code = 0
@@ -378,25 +378,25 @@ class Chat:
             'project_type': settings_args['project_type'],
         }
         self.user_info['current_user_id'] = uid
-        self.channel_list = self.gpt_config['channel_list']
-        self.mode_list = self.gpt_config['channel'][settings_args['channel']]['mode_list']
-        self.model_list = self.gpt_config['channel'][settings_args['channel']]['model_list']
-        self.knowledge_base_list = self.gpt_config['channel'][settings_args['channel']]['knowledge_base_list']
+        self.channel_list = self.llm_config['channel_list']
+        self.mode_list = self.llm_config['channel'][settings_args['channel']]['mode_list']
+        self.model_list = self.llm_config['channel'][settings_args['channel']]['model_list']
+        self.knowledge_base_list = self.llm_config['channel'][settings_args['channel']]['knowledge_base_list']
         if settings_args['channel'] not in self.channel_list:
             code = 1
             messages = f"Unsupported channel. Please choose in {self.channel_list}."
             return code, messages
         elif settings_args['mode'] not in self.mode_list:
             code = 1
-            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the mode {settings_args['mode']}, Please choose in {self.mode_list}."
+            messages = f"User config update fail, {settings_args['channel']} doesn't support the mode {settings_args['mode']}, Please choose in {self.mode_list}."
             return code, messages
         elif settings_args['model'] not in self.model_list:
             code = 1
-            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the model {settings_args['model']}, please choose in {self.model_list}"
+            messages = f"User config update fail, {settings_args['channel']} doesn't support the model {settings_args['model']}, please choose in {self.model_list}"
             return code, messages
         elif settings_args['knowledge_base'] not in self.knowledge_base_list:
             code = 1
-            messages = f"LLM config update fail, {settings_args['channel']} doesn't support the knowledge_base {settings_args['knowledge_base']}, please choose in {self.knowledge_base_list}"
+            messages = f"User config update fail, {settings_args['channel']} doesn't support the knowledge_base {settings_args['knowledge_base']}, please choose in {self.knowledge_base_list}"
             return code, messages
         # 更新配置文件
         update_config(self.user_info_path, self.user_info)
@@ -415,29 +415,29 @@ class Chat:
         messages = "User info update successfully"
         return messages
 
-    def update_gpt_conf(self):
+    def update_llm_conf(self):
         # 在gpt配置文件中更新对话模式
         self.current_channel = self.current_user_info['channel']
         self.current_llm = self.current_user_info['model']
         self.current_mode = self.current_user_info['mode']
-        self.gpt_config['current_channel'] = self.current_channel
-        self.gpt_config['current_llm'] = self.current_llm
-        self.gpt_config['current_mode'] = self.current_mode
+        self.llm_config['current_channel'] = self.current_channel
+        self.llm_config['current_llm'] = self.current_llm
+        self.llm_config['current_mode'] = self.current_mode
         # 更新配置文件
-        update_config(self.gpt_config_path, self.gpt_config)
+        update_config(self.llm_config_path, self.llm_config)
         # 加载配置文件
         code = 0
-        messages = self.load_gpt_conf()
+        messages = self.load_llm_conf()
         return code, messages
 
-    def _load_gpt_conf(self):
-        self.gpt_config = load_config(self.gpt_config_path)  # 初始化配置
-        self.current_channel = self.gpt_config['current_channel']
-        self.current_llm = self.gpt_config['current_llm']
-        self.current_mode = self.gpt_config['current_mode']
-        self.min_tokens = self.gpt_config['min_tokens']
-        self.max_tokens = self.gpt_config['max_tokens']
-        self.mode_conf = self.gpt_config['channel'][self.current_channel][self.current_llm][
+    def _load_llm_conf(self):
+        self.llm_config = load_config(self.llm_config_path)  # 初始化配置
+        self.current_channel = self.llm_config['current_channel']
+        self.current_llm = self.llm_config['current_llm']
+        self.current_mode = self.llm_config['current_mode']
+        self.min_tokens = self.llm_config['min_tokens']
+        self.max_tokens = self.llm_config['max_tokens']
+        self.mode_conf = self.llm_config['channel'][self.current_channel][self.current_llm][
             self.current_mode]
         self.history_len = self.mode_conf['history_len'] * 2
         messages = "LLM config update successfully"

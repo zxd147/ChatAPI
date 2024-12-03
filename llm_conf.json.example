@@ -11,7 +11,8 @@
             "knowledge_base_list": [
                 "zyy",
                 "dentistry",
-                "ecology"
+                "ecology",
+                "spectrum"
             ],
             "Qwen2.5-7B-Instruct": {
                 "knowledge": {
@@ -35,7 +36,8 @@
                     "authorization": {
                         "zyy": "Bearer fastgpt-akLyVjSwTDCKnma0MdAKelmcPgeEpJ8bcB2HSlNZ0giyhrze6APjWoY",
                         "dentistry": "Bearer fastgpt-hc6kvezCaT7Ylr5RHvpQ5SPWoUpftXP6qfyykZz0DvBzvy7hJvWh03C9zKMNF",
-                        "ecology": "Bearer fastgpt-tnZ9ZjQv7Okc9F3C4SgVDLD9t2t1GcmHEsPpZwYkV8zDGcmNBPfhSWURjR"
+                        "ecology": "Bearer fastgpt-tnZ9ZjQv7Okc9F3C4SgVDLD9t2t1GcmHEsPpZwYkV8zDGcmNBPfhSWURjR",
+                        "spectrum": "Bearer fastgpt-yQ77bCgSOy0oAq3Mb4hcxeun5TpU3v2l4sDs4tqF5uP0HypKlSGcoX1"
                     }
                 },
                 "direct": {
@@ -60,7 +62,8 @@
                     "authorization": {
                         "zyy": "Bearer fastgpt-y4rsDwlnrppQPKfRR2AN40jVx6mdCeeOfRtus7TyA5s4FgPUMko91nvSA6L",
                         "dentistry": "Bearer fastgpt-ey4ouzBBj1PZf7EkKMHSZsfpqNAyCG1fH6LL6xak5DPhvrQmyBgzAFtNb",
-                        "ecology": "Bearer fastgpt-xDEckaO63BqzVzWmb4JCACSRuzyjj64L3mvDTge5EMClko9mNTmFVeoM6dDbgInA"
+                        "ecology": "Bearer fastgpt-xDEckaO63BqzVzWmb4JCACSRuzyjj64L3mvDTge5EMClko9mNTmFVeoM6dDbgInA",
+                        "spectrum": "Bearer fastgpt-ahBw7ZqEp3iynQsssHlVW5sbQapRDBAIe5auvqsrm9gmqTGxB8LlvmGz"
                     }
                 }
             }
@@ -171,9 +174,9 @@
         "GraphRAG",
         "LangChain"
     ],
-    "current_channel": "FastGPT",
+    "current_channel": "GraphRAG",
     "current_llm": "Qwen2.5-7B-Instruct",
-    "current_mode": "knowledge",
+    "current_mode": "local",
     "max_tokens": 60,
     "min_tokens": 20
 }

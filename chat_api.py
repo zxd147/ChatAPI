@@ -23,9 +23,9 @@ from utils.log_utils import setup_logger, get_loger
 
 def init_app():
     logs = f"Service started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-    gpt_config_path = 'llm_conf.json'
+    llm_config_path = 'llm_conf.json'
     user_info_path = 'user_info.json'
-    chat_instance = Chat(gpt_config_path, user_info_path)
+    chat_instance = Chat(llm_config_path, user_info_path)
     chat_logger.info(logs)
     chat_logger.info(chat_instance.init_messages)
     return chat_instance

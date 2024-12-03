@@ -83,7 +83,7 @@ class SettingsRequest(OpenAIBaseModel):
     channel: Literal['FastGPT', 'GraphRAG', 'LangChain'] = 'FastGPT'
     model: Literal['Qwen2.5-7B-Instruct', 'Qwen2.5-7B-Instruct', 'ChatGLM-6B'] = 'Qwen2.5-7B-Instruct'
     mode: Literal['knowledge', 'direct', 'local', 'global', 'full'] = 'knowledge'
-    knowledge_base: Literal['zyy', 'hengsha', 'guangxin', 'dentistry', 'ecology', 'test'] = 'dentistry'
+    knowledge_base: Literal['zyy', 'hengsha', 'guangxin', 'spectrum', 'dentistry', 'ecology', 'test'] = 'dentistry'
     stream: bool = False
     project_type: Union[int, str] = 1
 
