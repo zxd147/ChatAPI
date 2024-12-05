@@ -115,6 +115,7 @@ async def index():
     return HTMLResponse(status_code=200, content=service_name)
 
 
+@chat_app.get("/http_check")
 @chat_app.get("/health")
 async def health():
     """Health check."""

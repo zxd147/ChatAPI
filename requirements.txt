@@ -17,4 +17,4 @@ python-magic==0.4.27
 numpy==2.1.2
 openai==1.42.0
 environs==11.1.0
-python-multipart==0.0.9
+python-multipart==0.0.18
