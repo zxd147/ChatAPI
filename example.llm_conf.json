@@ -3,19 +3,19 @@
         "FastGPT": {
             "mode_list": [
                 "direct",
-                "knowledge"
+                "tool"
             ],
-            "model_list": [
-                "Qwen2.5-7B-Instruct"
-            ],
-            "knowledge_base_list": [
+            "knowledge_list": [
                 "zyy",
                 "dentistry",
                 "ecology",
                 "spectrum"
             ],
+            "model_list": [
+                "Qwen2.5-7B-Instruct"
+            ],
             "Qwen2.5-7B-Instruct": {
-                "knowledge": {
+                "direct": {
                     "chat_url": "http://192.168.0.244:8012/api/v1/chat/completions",
                     "headers": {
                         "Authorization": "Bearer fastgpt-hc6kvezCaT7Ylr5RHvpQ5SPWoUpftXP6qfyykZz0DvBzvy7hJvWh03C9zKMNF",
@@ -40,7 +40,7 @@
                         "spectrum": "Bearer fastgpt-yQ77bCgSOy0oAq3Mb4hcxeun5TpU3v2l4sDs4tqF5uP0HypKlSGcoX1"
                     }
                 },
-                "direct": {
+                "tool": {
                     "chat_url": "http://192.168.0.244:8012/api/v1/chat/completions",
                     "headers": {
                         "Authorization": "Bearer fastgpt-y4rsDwlnrppQPKfRR2AN40jVx6mdCeeOfRtus7TyA5s4FgPUMko91nvSA6L",
@@ -73,13 +73,14 @@
                 "local",
                 "global"
             ],
-            "model_list": [
-                "Qwen2.5-7B-Instruct"
-            ],
-            "knowledge_base_list": [
+            "knowledge_list": [
                 "zyy",
                 "dentistry",
-                "ecology"
+                "ecology",
+                "spectra"
+            ],
+            "model_list": [
+                "Qwen2.5-7B-Instruct"
             ],
             "Qwen2.5-7B-Instruct": {
                 "local": {
@@ -91,7 +92,7 @@
                     "param": {
                         "model": "Qwen2.5-7B-Instruct",
                         "mode": "local",
-                        "knowledge_base": "dentistry",
+                        "knowledge": "dentistry",
                         "messages": [],
                         "temperature": 1.0,
                         "stream": true
@@ -106,7 +107,7 @@
                     "param": {
                         "model": "Qwen2.5-7B-Instruct",
                         "mode": "global",
-                        "knowledge_base": "dentistry",
+                        "knowledge": "dentistry",
                         "messages": [],
                         "temperature": 1.0,
                         "stream": true
@@ -122,7 +123,7 @@
             "model_list": [
                 "ChatGLM-6B"
             ],
-            "knowledge_base_list": [
+            "knowledge_list": [
                 "hengsha",
                 "guangxin",
                 "zyy"
@@ -174,9 +175,11 @@
         "GraphRAG",
         "LangChain"
     ],
-    "current_channel": "GraphRAG",
-    "current_llm": "Qwen2.5-7B-Instruct",
-    "current_mode": "local",
+    "current_channel": "FastGPT",
+    "current_mode": "direct",
+    "current_knowledge": "zyy",
+    "current_model": "Qwen2.5-7B-Instruct",
     "max_tokens": 60,
-    "min_tokens": 20
+    "min_tokens": 20,
+    "knowledge": "dentistry"
 }

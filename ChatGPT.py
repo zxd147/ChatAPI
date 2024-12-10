@@ -12,7 +12,6 @@ from seg_sentences import split_text
 from update_load_config import load_config, update_config
 from utils.log_utils import get_loger
 
-
 # # 创建一个日志器
 # api_logger = logging.getLogger('LLM')
 # api_logger.setLevel(logging.INFO)
@@ -32,7 +31,7 @@ class Chat:
     def __init__(self, llm_config_path, user_info_path):
         self.llm_config_path = llm_config_path
         self.user_info_path = user_info_path
-        self.init_messages = " * init successfully: " + self._load_llm_conf() + ", " + self._load_user_info()
+        self.init_messages = " * app init successfully: " + self._load_llm_conf() + ", " + self._load_user_info()
 
     def load_user_info(self):
         return self._load_user_info()
@@ -52,7 +51,7 @@ class Chat:
         query = completions_args['query'] or completions_args['content']
         if uid not in self.user_info['all_user_info']:
             code = 1
-            messages = f"User UID: {uid}, Please upload your settings before the conversation"
+            messages = f"User UID: {uid} doesn't exist, Please upload your settings before the conversation"
             answer = ''
         else:
             if uid != self.current_user_id:
@@ -68,9 +67,12 @@ class Chat:
                 code, messages, answer = await self.chat_with_fastgpt(completions_args)
             elif self.current_channel == "GraphRAG":
                 code, messages, answer = await self.chat_with_graphrag(completions_args)
-            # elif self.current_channel == "LangChain":
-            else:
+            elif self.current_channel == "LangChain":
                 code, messages, answer = self.chat_with_langchain(completions_args)
+            else:
+                code = -1
+                messages = f"Unsupported channel: {self.current_channel}."
+                answer = ""
         answers = split_text(answer, self.min_tokens, self.max_tokens, sentences=[])
         return code, messages, answers
 
@@ -81,12 +83,12 @@ class Chat:
         messages = completions_args['messages']
         query = completions_args['query'] or completions_args['content']
         chat_url = self.mode_conf['chat_url']
-        knowledge_base = self.current_user_info['knowledge_base']
+        knowledge = self.current_user_info['knowledge']
         headers = copy.deepcopy(self.mode_conf['headers'])
         try:
-            headers['Authorization'] = self.mode_conf['authorization'][knowledge_base]
+            headers['Authorization'] = self.mode_conf['authorization'][knowledge]
         except KeyError as e:
-            msg = f"'knowledge_base' error：{e}"
+            msg = f"'knowledge' error：{e}"
             api_logger.error(msg)
             raise ValueError(msg)
         param = copy.deepcopy(self.mode_conf['param'])
@@ -125,7 +127,8 @@ class Chat:
                                 answer = response_data['choices'][0]['message'].get('content', '')
                                 if isinstance(answer, list):
                                     answer = next(
-                                        (item['text']['content'] for item in answer if item.get('type') == 'text'), answer)
+                                        (item['text']['content'] for item in answer if item.get('type') == 'text'),
+                                        answer)
                             elif response.content_type == 'text/event-stream':
                                 encoding = response.charset
                                 async for line in response.content:
@@ -152,20 +155,12 @@ class Chat:
                         else:
                             code = -1
                             messages = f'FastGPT response failed with status code: {response.status}. '
-        except asyncio.TimeoutError as e:
-            messages = f'TimeoutError: {e}'
-            api_logger.error(messages)
-        except json.JSONDecodeError as e:
-            messages = f'JSONDecodeError: {e}'
-            api_logger.error(messages)
-        except KeyError as e:
-            messages = f'KeyError: {e}'
-            api_logger.error(messages)
-        except Exception as e:
-            messages = f'Unknown Error: {e}'
-            api_logger.error(messages)
-        if answer.startswith("0:") or answer.startswith("1:"):
-            answer = answer[2:].strip()  # 去除前两个字符
+        except (asyncio.TimeoutError, json.JSONDecodeError, KeyError, Exception) as e:
+            error_type = type(e).__name__
+            code = -1
+            messages = f'{error_type}: {e}'
+        answer = answer[2:].strip() if answer[:2] in ("0:", "1:") else answer
+        # 去除前两个字符
         if answer != '':
             logs = f'{messages}, response_data: ===\n{response_data}\n==='
             api_logger.debug(logs)
@@ -181,7 +176,6 @@ class Chat:
                 if response_data:
                     messages = f"{messages}, ChatGPT response text is empty, response_data: ===\n{response_data}\n==="
             api_logger.error(messages)
-            print(messages)
         return code, messages, answer
 
     async def chat_with_graphrag(self, completions_args):
@@ -209,7 +203,8 @@ class Chat:
                                 answer = response_data['choices'][0]['message'].get('content', '')
                                 if isinstance(answer, list):
                                     answer = next(
-                                        (item['text']['content'] for item in answer if item.get('type') == 'text'), answer)
+                                        (item['text']['content'] for item in answer if item.get('type') == 'text'),
+                                        answer)
                             elif response.content_type == 'text/event-stream':
                                 encoding = response.charset
                                 async for line in response.content:
@@ -236,20 +231,10 @@ class Chat:
                         else:
                             code = -1
                             messages = f'GraphRAG response failed with status code: {response.status}. '
-        except asyncio.TimeoutError as e:
-            messages = f'TimeoutError: {e}'
-            api_logger.error(messages)
-        except json.JSONDecodeError as e:
-            messages = f'JSONDecodeError: {e}'
-            api_logger.error(messages)
-        except KeyError as e:
-            messages = f'KeyError: {e}'
-            api_logger.error(messages)
-        except Exception as e:
-            messages = f'Unknown Error: {e}'
-            api_logger.error(messages)
-        if answer.startswith("0:") or answer.startswith("1:"):
-            answer = answer[2:].strip()  # 去除前两个字符
+        except (asyncio.TimeoutError, json.JSONDecodeError, KeyError, Exception) as e:
+            error_type = type(e).__name__
+            code = -1
+            messages = f'{error_type}: {e}'
         answer = answer.split('[Data')[0].split('[数据')[0]
         # # 定义正则表达式
         # # pattern = r'\[Data: Sources \(.*?\); Entities \(.*?\)\]'
@@ -274,7 +259,6 @@ class Chat:
                 if response_data:
                     messages = f"{messages}, ChatGPT response text is empty, response_data: ===\n{response_data}\n==="
             api_logger.error(messages)
-            print(messages)
         return code, messages, answer
 
     async def chat_with_langchain(self, completions_args):
@@ -286,7 +270,8 @@ class Chat:
         param['conversation_id'] = self.conversation_id
         param['history'] = self.history
         param['history_len'] = self.history_len
-        param['knowledge_base_name'] = self.current_user_info['knowledge_base']
+        param['model_name'] = self.current_user_info['model'].lower()
+        param['knowledge_base_name'] = self.current_user_info['knowledge']
         logs = f"LangChain Request param: ---\n{json.dumps(param, ensure_ascii=False, indent=None)}\n---"
         api_logger.debug(logs)
         answer = ''
@@ -310,7 +295,6 @@ class Chat:
             messages = f'ChatGPT Response failed with status code {response.status_code}, \n{response.text}'
             answer = ''
             api_logger.error(messages)
-            print(messages)
         return code, messages, answer
 
     def load_history(self):
@@ -324,10 +308,9 @@ class Chat:
                 # 使用正则表达式去掉时间戳
                 history_text = re.sub(timestamp_pattern, '', history_text)
                 # 加上方括号
-                history_text = '[' + history_text + ']'  # 解析 JSON 数据
-                self.history = json.loads(history_text)
+                history_text = '[' + history_text + ']'
+                self.history = json.loads(history_text)  # 解析 JSON 数据
                 if len(self.history) > self.history_len:
-                    # self.history = self.history[0] + self.history[-self.history_len:]
                     self.history = self.history[-self.history_len:]
         except FileNotFoundError:
             self.history = []  # 如果文件不存在，初始化为空
@@ -342,7 +325,7 @@ class Chat:
         timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
         with open(self.history_file, mode='a', encoding='utf-8') as file:
             if file.tell() != 0:
-                # 如果文件不为空，先写入一个逗号
+                # 如果文件不为空，先写入一个逗号+换行符
                 file.write(", \n")
             file.write(f"{timestamp}\n")
             # 将历史记录转换为 JSON 格式字符串并写入文件
@@ -359,44 +342,48 @@ class Chat:
         self.load_user_info()
         return messages
 
-    def update_user_info(self, settings_args):
-        uid = settings_args['uid']
+    def update_user_info(self, user_info_dict):
         # 更新当前用户ID
-        if uid not in self.user_info['all_user_info']:
-            conversation_id = [str(uuid.uuid4().hex[:8])]
-        else:
-            conversation_id = self.user_info['all_user_info'][uid]['conversation_id']
-        # 更新用户信息
-        self.user_info['all_user_info'][uid] = {
-            'uid': uid,  # 设置默认聊天模式
-            'channel': settings_args['channel'],  # 设置默认聊天模式
-            'model': settings_args['model'],
-            'mode': settings_args['mode'],  # 设置默认聊天模式
-            'stream': settings_args['stream'],  # 设置流式
-            'conversation_id': conversation_id,  # 初始化对话列表
-            'knowledge_base': settings_args['knowledge_base'],
-            'project_type': settings_args['project_type'],
+        uid = user_info_dict['uid']
+        channel = user_info_dict['channel']
+        mode = user_info_dict['mode']
+        knowledge = user_info_dict['knowledge']
+        model = user_info_dict['model']
+        stream = user_info_dict['stream']
+        project_type = user_info_dict['project_type']
+        conversation_id = self.user_info['all_user_info'].setdefault(
+            uid, {'conversation_id': [str(uuid.uuid4().hex[:8])]}
+        )['conversation_id']
+        current_user_info = {
+            'uid': uid,
+            'channel': channel,  # 设置默认检索渠道
+            'mode': mode,  # 设置默认检索模式
+            'knowledge': knowledge,  # 设置默认检索模式
+            'model': model,  # 设置默认llm模型
+            'stream': stream,  # 设置流式
+            'project_type': project_type,
+            'conversation_id': conversation_id  # 设置流式
         }
+        # 更新用户信息
+        self.user_info['all_user_info'][uid].update(current_user_info)
         self.user_info['current_user_id'] = uid
         self.channel_list = self.llm_config['channel_list']
-        self.mode_list = self.llm_config['channel'][settings_args['channel']]['mode_list']
-        self.model_list = self.llm_config['channel'][settings_args['channel']]['model_list']
-        self.knowledge_base_list = self.llm_config['channel'][settings_args['channel']]['knowledge_base_list']
-        if settings_args['channel'] not in self.channel_list:
-            code = 1
-            messages = f"Unsupported channel. Please choose in {self.channel_list}."
-            return code, messages
-        elif settings_args['mode'] not in self.mode_list:
-            code = 1
-            messages = f"User config update fail, {settings_args['channel']} doesn't support the mode {settings_args['mode']}, Please choose in {self.mode_list}."
-            return code, messages
-        elif settings_args['model'] not in self.model_list:
-            code = 1
-            messages = f"User config update fail, {settings_args['channel']} doesn't support the model {settings_args['model']}, please choose in {self.model_list}"
-            return code, messages
-        elif settings_args['knowledge_base'] not in self.knowledge_base_list:
-            code = 1
-            messages = f"User config update fail, {settings_args['channel']} doesn't support the knowledge_base {settings_args['knowledge_base']}, please choose in {self.knowledge_base_list}"
+        self.mode_list = self.llm_config['channel'][channel]['mode_list']
+        self.knowledge_list = self.llm_config['channel'][channel]['knowledge_list']
+        self.model_list = self.llm_config['channel'][channel]['model_list']
+
+        def check_valid(param_name, value, valid_list):
+            if value not in valid_list:
+                return 1, f"User config update fail, {param_name} doesn't support {value}, please choose in {valid_list}."
+            return None, None
+
+        # 检查各项配置是否有效
+        code, messages = check_valid('channel', channel, self.channel_list) or \
+                         check_valid(channel, mode, self.mode_list) or \
+                         check_valid(channel, knowledge, self.knowledge_list) or \
+                         check_valid('model', model, self.model_list)
+        # 如果有错误，返回错误信息
+        if code:
             return code, messages
         # 更新配置文件
         update_config(self.user_info_path, self.user_info)
@@ -417,12 +404,10 @@ class Chat:
 
     def update_llm_conf(self):
         # 在gpt配置文件中更新对话模式
-        self.current_channel = self.current_user_info['channel']
-        self.current_llm = self.current_user_info['model']
-        self.current_mode = self.current_user_info['mode']
-        self.llm_config['current_channel'] = self.current_channel
-        self.llm_config['current_llm'] = self.current_llm
-        self.llm_config['current_mode'] = self.current_mode
+        self.llm_config['current_channel'] = self.current_user_info['channel']
+        self.llm_config['current_mode'] = self.current_user_info['mode']
+        self.llm_config['knowledge'] = self.current_user_info['knowledge']
+        self.llm_config['current_model'] = self.current_user_info['model']
         # 更新配置文件
         update_config(self.llm_config_path, self.llm_config)
         # 加载配置文件
@@ -433,12 +418,12 @@ class Chat:
     def _load_llm_conf(self):
         self.llm_config = load_config(self.llm_config_path)  # 初始化配置
         self.current_channel = self.llm_config['current_channel']
-        self.current_llm = self.llm_config['current_llm']
         self.current_mode = self.llm_config['current_mode']
+        self.current_knowledge = self.llm_config['current_knowledge']
+        self.current_model = self.llm_config['current_model']
         self.min_tokens = self.llm_config['min_tokens']
         self.max_tokens = self.llm_config['max_tokens']
-        self.mode_conf = self.llm_config['channel'][self.current_channel][self.current_llm][
-            self.current_mode]
+        self.mode_conf = self.llm_config['channel'][self.current_channel][self.current_model][self.current_mode]
         self.history_len = self.mode_conf['history_len'] * 2
         messages = "LLM config update successfully"
         return messages

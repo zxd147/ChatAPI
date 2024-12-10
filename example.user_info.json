@@ -1,17 +1,17 @@
 {
-    "current_user_id": "1727324966",
+    "current_user_id": "dentist",
     "all_user_info": {
         "admin": {
             "uid": "admin",
-            "channel": "LangChain",
-            "model": "ChatGLM-6B",
-            "mode": "knowledge",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
             "stream": false,
             "conversation_id": [
                 "1024",
                 "6d30c260"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "spectra",
             "project_type": 1
         },
         "1717484722": {
@@ -23,7 +23,7 @@
             "conversation_id": [
                 "048e23b9"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1724051976": {
@@ -35,7 +35,7 @@
             "conversation_id": [
                 "3198b138"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724061146": {
@@ -47,7 +47,7 @@
             "conversation_id": [
                 "37afcfef"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724061247": {
@@ -59,7 +59,7 @@
             "conversation_id": [
                 "9f486507"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724061380": {
@@ -71,7 +71,7 @@
             "conversation_id": [
                 "28868114"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724116488": {
@@ -83,7 +83,7 @@
             "conversation_id": [
                 "24918a81"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724125667": {
@@ -95,7 +95,7 @@
             "conversation_id": [
                 "284f55ec"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724136558": {
@@ -107,7 +107,7 @@
             "conversation_id": [
                 "e0278a08"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724139371": {
@@ -119,7 +119,7 @@
             "conversation_id": [
                 "7af05fb7"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724139446": {
@@ -131,7 +131,7 @@
             "conversation_id": [
                 "5955c6b3"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724139770": {
@@ -143,7 +143,7 @@
             "conversation_id": [
                 "7c27f0f2"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724140618": {
@@ -155,7 +155,7 @@
             "conversation_id": [
                 "693e5b49"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724140994": {
@@ -167,7 +167,7 @@
             "conversation_id": [
                 "c5b9f7a8"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724141455": {
@@ -179,7 +179,7 @@
             "conversation_id": [
                 "4a35810d"
             ],
-            "knowledge_base": "hengsha",
+            "knowledge": "hengsha",
             "project_type": 0
         },
         "1724227165": {
@@ -191,7 +191,7 @@
             "conversation_id": [
                 "b8a5918d"
             ],
-            "knowledge_base": "hengsha",
+            "knowledge": "hengsha",
             "project_type": 0
         },
         "1724227292": {
@@ -203,7 +203,7 @@
             "conversation_id": [
                 "de0f75b7"
             ],
-            "knowledge_base": "hengsha",
+            "knowledge": "hengsha",
             "project_type": 0
         },
         "1724229115": {
@@ -215,7 +215,7 @@
             "conversation_id": [
                 "6e55b992"
             ],
-            "knowledge_base": "hengsha",
+            "knowledge": "hengsha",
             "project_type": 0
         },
         "1724287582": {
@@ -227,7 +227,7 @@
             "conversation_id": [
                 "d4ad5e04"
             ],
-            "knowledge_base": "hengsha",
+            "knowledge": "hengsha",
             "project_type": 0
         },
         "1724294304": {
@@ -239,7 +239,7 @@
             "conversation_id": [
                 "c20427f6"
             ],
-            "knowledge_base": "hengsha",
+            "knowledge": "hengsha",
             "project_type": 0
         },
         "zxd": {
@@ -251,7 +251,7 @@
             "conversation_id": [
                 "f2b18465"
             ],
-            "knowledge_base": "dentistry",
+            "knowledge": "dentistry",
             "project_type": 1
         },
         "1724654668": {
@@ -263,7 +263,7 @@
             "conversation_id": [
                 "f4e4b3dc"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724661019": {
@@ -275,7 +275,7 @@
             "conversation_id": [
                 "284f569a"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724666446": {
@@ -287,7 +287,7 @@
             "conversation_id": [
                 "ee55d519"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724667708": {
@@ -299,7 +299,7 @@
             "conversation_id": [
                 "e40ab98b"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724747035": {
@@ -311,7 +311,7 @@
             "conversation_id": [
                 "20a1c424"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724747202": {
@@ -323,7 +323,7 @@
             "conversation_id": [
                 "44df1eb2"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724835943": {
@@ -335,7 +335,7 @@
             "conversation_id": [
                 "a334ede1"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724837344": {
@@ -347,7 +347,7 @@
             "conversation_id": [
                 "eb5a7b8c"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1724893480": {
@@ -359,7 +359,7 @@
             "conversation_id": [
                 "aa10e6b3"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1725334350": {
@@ -371,7 +371,7 @@
             "conversation_id": [
                 "39d3eeeb"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1725335070": {
@@ -383,7 +383,7 @@
             "conversation_id": [
                 "bc72e54f"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1725347730": {
@@ -395,7 +395,7 @@
             "conversation_id": [
                 "e59ede60"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1725613976": {
@@ -407,7 +407,7 @@
             "conversation_id": [
                 "54be4783"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1725872544": {
@@ -419,7 +419,7 @@
             "conversation_id": [
                 "adc6fb2b"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1726300390": {
@@ -431,7 +431,7 @@
             "conversation_id": [
                 "d14abc36"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1726126323": {
@@ -443,7 +443,7 @@
             "conversation_id": [
                 "0af69d4b"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1726653993": {
@@ -455,7 +455,7 @@
             "conversation_id": [
                 "8cf31b2a"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1725963714": {
@@ -467,7 +467,7 @@
             "conversation_id": [
                 "3bc6b5c7"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1726657170": {
@@ -479,7 +479,7 @@
             "conversation_id": [
                 "c298ff0a"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1726661086": {
@@ -491,7 +491,7 @@
             "conversation_id": [
                 "220a119b"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1726710673": {
@@ -503,7 +503,7 @@
             "conversation_id": [
                 "833b9eaf"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1726720431": {
@@ -511,11 +511,11 @@
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
             "mode": "knowledge",
-            "stream": true,
+            "stream": false,
             "conversation_id": [
                 "65acca77"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "dentistry",
             "project_type": 1
         },
         "1726726665": {
@@ -527,7 +527,7 @@
             "conversation_id": [
                 "64f05147"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1726727798": {
@@ -539,7 +539,7 @@
             "conversation_id": [
                 "d99291c0"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1726728352": {
@@ -551,7 +551,7 @@
             "conversation_id": [
                 "acc2cbe4"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1726728373": {
@@ -563,7 +563,7 @@
             "conversation_id": [
                 "373ec107"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1727174294": {
@@ -575,7 +575,7 @@
             "conversation_id": [
                 "f07a23bc"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727250526": {
@@ -587,7 +587,7 @@
             "conversation_id": [
                 "a894bbb0"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1727251087": {
@@ -599,7 +599,7 @@
             "conversation_id": [
                 "e33e990b"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1727254030": {
@@ -611,7 +611,7 @@
             "conversation_id": [
                 "58a4fe77"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1727254741": {
@@ -623,7 +623,7 @@
             "conversation_id": [
                 "13613f54"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727254837": {
@@ -635,7 +635,7 @@
             "conversation_id": [
                 "94810171"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1727282830": {
@@ -647,7 +647,7 @@
             "conversation_id": [
                 "23d0a0a9"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727322690": {
@@ -659,7 +659,7 @@
             "conversation_id": [
                 "6a0d3b2a"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727324966": {
@@ -671,7 +671,7 @@
             "conversation_id": [
                 "da5b913d"
             ],
-            "knowledge_base": "dentistry",
+            "knowledge": "dentistry",
             "project_type": 0
         },
         "1727339585": {
@@ -683,7 +683,7 @@
             "conversation_id": [
                 "aa37df5e"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727340523": {
@@ -691,26 +691,26 @@
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
             "mode": "knowledge",
-            "stream": true,
+            "stream": false,
             "conversation_id": [
                 "498e3447"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "dentistry",
             "project_type": 0
         },
         "dentist": {
             "uid": "dentist",
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
-            "mode": "knowledge",
-            "stream": true,
+            "mode": "direct",
+            "stream": false,
             "conversation_id": [
                 "d2900d32",
                 "f59bab01",
                 "53705239",
                 "bbb8892f"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "dentistry",
             "project_type": 1
         },
         "1727411022": {
@@ -722,7 +722,7 @@
             "conversation_id": [
                 "1c14f29b"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1727411494": {
@@ -734,7 +734,7 @@
             "conversation_id": [
                 "5836865d"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727411718": {
@@ -746,7 +746,7 @@
             "conversation_id": [
                 "5a970c2d"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727412005": {
@@ -758,7 +758,7 @@
             "conversation_id": [
                 "ce86deb4"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727420581": {
@@ -770,7 +770,7 @@
             "conversation_id": [
                 "be9b2184"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1727666003": {
@@ -782,7 +782,7 @@
             "conversation_id": [
                 "6e9cc4f2"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1728700485": {
@@ -790,11 +790,11 @@
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
             "mode": "knowledge",
-            "stream": true,
+            "stream": false,
             "conversation_id": [
                 "329c15d9"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "dentistry",
             "project_type": 0
         },
         "1728699239": {
@@ -806,7 +806,7 @@
             "conversation_id": [
                 "d234f509"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 0
         },
         "1729584627": {
@@ -818,7 +818,7 @@
             "conversation_id": [
                 "3ac4dcc4"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1729672302": {
@@ -830,7 +830,7 @@
             "conversation_id": [
                 "beafa55a"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1730427257": {
@@ -842,7 +842,7 @@
             "conversation_id": [
                 "45b12bc7"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1730427436": {
@@ -850,11 +850,11 @@
             "channel": "FastGPT",
             "model": "Qwen2.5-7B-Instruct",
             "mode": "knowledge",
-            "stream": true,
+            "stream": false,
             "conversation_id": [
                 "59e20480"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "dentistry",
             "project_type": 1
         },
         "1730807320": {
@@ -866,7 +866,7 @@
             "conversation_id": [
                 "f43b7567"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1731373709": {
@@ -878,7 +878,7 @@
             "conversation_id": [
                 "86037db6"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1112": {
@@ -890,7 +890,7 @@
             "conversation_id": [
                 "3bcc9417"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1731512009": {
@@ -902,7 +902,7 @@
             "conversation_id": [
                 "188a65de"
             ],
-            "knowledge_base": "zyy",
+            "knowledge": "zyy",
             "project_type": 1
         },
         "1731634492": {
@@ -914,8 +914,476 @@
             "conversation_id": [
                 "1e72e0ea"
             ],
-            "knowledge_base": "dentistry",
+            "knowledge": "dentistry",
             "project_type": 1
+        },
+        "1732256246": {
+            "uid": "1732256246",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "3e3a3971"
+            ],
+            "knowledge": "dentistry",
+            "project_type": 1
+        },
+        "1732257814": {
+            "uid": "1732257814",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "18292fb1"
+            ],
+            "knowledge": "dentistry",
+            "project_type": 1
+        },
+        "1732264197": {
+            "uid": "1732264197",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "64b08cb7"
+            ],
+            "knowledge": "hengsha",
+            "project_type": 0
+        },
+        "1732264256": {
+            "uid": "1732264256",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "1b1e765f"
+            ],
+            "knowledge": "hengsha",
+            "project_type": 0
+        },
+        "1732264452": {
+            "uid": "1732264452",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "35b4b851"
+            ],
+            "knowledge": "hengsha",
+            "project_type": 0
+        },
+        "1732264861": {
+            "uid": "1732264861",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "91c5ae0e"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732271967": {
+            "uid": "1732271967",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "011b6f2f"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732272309": {
+            "uid": "1732272309",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "0ee7d0af"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732272738": {
+            "uid": "1732272738",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "8a83a9da"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1732273321": {
+            "uid": "1732273321",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "982c56d4"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1732277007": {
+            "uid": "1732277007",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "524cf6d8"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "test": {
+            "uid": "test",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "d0d35204"
+            ],
+            "knowledge": "zyy",
+            "project_type": 1
+        },
+        "1732601492": {
+            "uid": "1732601492",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "d8cc9a64"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732601550": {
+            "uid": "1732601550",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "2a5e006e"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732601580": {
+            "uid": "1732601580",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "090cf805"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732605526": {
+            "uid": "1732605526",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "6725d0cc"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732605756": {
+            "uid": "1732605756",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "bf0048ec"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1732606047": {
+            "uid": "1732606047",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "d2e8ead8"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1732607292": {
+            "uid": "1732607292",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "ef761ed5"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1732669717": {
+            "uid": "1732669717",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "c6cce24a"
+            ],
+            "knowledge": "zyy",
+            "project_type": 0
+        },
+        "1733211874": {
+            "uid": "1733211874",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "a7cdc1bc"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1733212087": {
+            "uid": "1733212087",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "3228aaeb"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1733213130": {
+            "uid": "1733213130",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "0b3ca7e4"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1733214401": {
+            "uid": "1733214401",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "f5a07899"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1733214728": {
+            "uid": "1733214728",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "9c880804"
+            ],
+            "knowledge": "ecology",
+            "project_type": 0
+        },
+        "1733215900": {
+            "uid": "1733215900",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "c3477de2"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733218181": {
+            "uid": "1733218181",
+            "channel": "GraphRAG",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "6bce1e46"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733218353": {
+            "uid": "1733218353",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "local",
+            "stream": false,
+            "conversation_id": [
+                "94073f1e"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733218503": {
+            "uid": "1733218503",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "225c59e5"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733218602": {
+            "uid": "1733218602",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "787d8678"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733218873": {
+            "uid": "1733218873",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "141de295"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733219456": {
+            "uid": "1733219456",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "7dbace98"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733222939": {
+            "uid": "1733222939",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "fc49fa52"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733225113": {
+            "uid": "1733225113",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "2aad0755"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733225377": {
+            "uid": "1733225377",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "16083aab"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733226923": {
+            "uid": "1733226923",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "47307eba"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733292841": {
+            "uid": "1733292841",
+            "channel": "FastGPT",
+            "model": "Qwen2.5-7B-Instruct",
+            "mode": "knowledge",
+            "stream": false,
+            "conversation_id": [
+                "a10ee4a7"
+            ],
+            "knowledge": "spectrum",
+            "project_type": 0
+        },
+        "1733293075": {
+            "uid": "1733293075",
+            "channel": "FastGPT",
+            "mode": "knowledge",
+            "knowledge": "spectrum",
+            "model": "Qwen2.5-7B-Instruct",
+            "stream": false,
+            "project_type": 0,
+            "conversation_id": [
+                "3b984660"
+            ]
+        },
+        "1733741779": {
+            "uid": "1733741779",
+            "channel": "GraphRAG",
+            "knowledge": "ecology",
+            "mode": "local",
+            "model": "Qwen2.5-7B-Instruct",
+            "stream": false,
+            "project_type": 0,
+            "conversation_id": [
+                "20525425"
+            ]
         }
     }
 }

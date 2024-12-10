@@ -21,11 +21,9 @@ from openai_schema import SettingsRequest, SettingsResponse, ChatRequest, ChatRe
 from utils.log_utils import setup_logger, get_loger
 
 
-def init_app():
+def init_app(llm_config_file, user_info_file):
     logs = f"Service started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-    llm_config_path = 'llm_conf.json'
-    user_info_path = 'user_info.json'
-    chat_instance = Chat(llm_config_path, user_info_path)
+    chat_instance = Chat(llm_config_file, user_info_file)
     chat_logger.info(logs)
     chat_logger.info(chat_instance.init_messages)
     return chat_instance
@@ -87,7 +85,7 @@ executor = ThreadPoolExecutor(max_workers=10)
 chat_app = FastAPI()
 secret_key = os.getenv('CHAT-API-SECRET-KEY', 'sk-chat-api')
 chat_app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'], )
-chat_app.add_middleware(BasicAuthMiddleware, secret_key=secret_key)
+# chat_app.add_middleware(BasicAuthMiddleware, secret_key=secret_key)
 
 
 # 将 Pydantic 模型实例转换为 JSON 字符串
@@ -172,6 +170,8 @@ async def get_system_status():
 @chat_app.post("/v1/chat/settings")
 async def chat_settings(request: SettingsRequest):
     try:
+        request.mode = "direct" if request.mode == "knowledge" else request.mode
+        request.knowledge = request.knowledge or request.knowledge_base
         sno = request.sno
         logs = f"Settings request param: {request.model_dump()}"
         chat_logger.info(logs)
@@ -257,6 +257,8 @@ async def chat_completions(request: ChatRequest):
 
 
 if __name__ == '__main__':
-    chat = init_app()
+    llm_config_path = 'llm_conf.json'
+    user_info_path = 'user_info.json'
+    chat = init_app(llm_config_path, user_info_path)
     # uvicorn.run(chat_app, host='0.0.0.0', port=8090, workers=2, limit_concurrency=4, limit_max_requests=100)
     uvicorn.run(chat_app, host='0.0.0.0', port=8090)

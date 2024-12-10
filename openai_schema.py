@@ -81,11 +81,13 @@ class SettingsRequest(OpenAIBaseModel):
     sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
     uid: Union[int, str]
     channel: Literal['FastGPT', 'GraphRAG', 'LangChain'] = 'FastGPT'
-    model: Literal['Qwen2.5-7B-Instruct', 'Qwen2.5-7B-Instruct', 'ChatGLM-6B'] = 'Qwen2.5-7B-Instruct'
-    mode: Literal['knowledge', 'direct', 'local', 'global', 'full'] = 'knowledge'
-    knowledge_base: Literal['zyy', 'hengsha', 'guangxin', 'spectrum', 'spectra', 'dentistry', 'ecology', 'test'] = 'dentistry'
+    model: Literal['Qwen2-7B-Instruct', 'Qwen2.5-7B-Instruct', 'ChatGLM3-6B'] = 'Qwen2.5-7B-Instruct'
+    mode: Literal['default', 'knowledge', 'direct', 'tool', 'local', 'global', 'full'] = 'direct'
+    # knowledge: Literal['zyy', 'dentistry', 'spectrum', 'spectra', 'ecology', 'hengsha', 'guangxin', 'test'] = 'zyy'
+    knowledge: Optional[Literal['zyy', 'dentistry', 'spectrum', 'spectra', 'ecology', 'hengsha', 'guangxin', 'test']] = None
+    knowledge_base: Literal['zyy', 'dentistry', 'spectrum', 'spectra', 'ecology', 'hengsha', 'guangxin', 'test'] = 'dentistry'
     stream: bool = False
-    project_type: Union[int, str] = 1
+    project_type: Union[int, str] = 0
 
 
 class SettingsResponse(OpenAIBaseModel):
