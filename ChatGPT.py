@@ -39,16 +39,84 @@ class Chat:
     def load_llm_conf(self):
         return self._load_llm_conf()
 
-    async def set(self, settings_args):
+    async def settings(self, settings_args):
         user_code, user_messages = self.update_user_info(settings_args)
         llm_code, llm_messages = self.update_llm_conf()
         messages = user_messages + ", " + llm_messages
         code = user_code or llm_code
         return code, messages
 
+    async def questions(self, questions_args):
+        uid = questions_args['uid']
+        questions_num = questions_args['questions_num']
+        current_user_info = self.user_info['all_user_info'][uid]
+        channel = current_user_info['channel']
+        if uid not in self.user_info['all_user_info'] or channel != 'FastGPT':
+            error_type = "uid" if uid not in self.user_info['all_user_info'] else "channel"
+            errors = {
+                "uid": f"User UID: {uid} doesn't exist. Please upload your settings before creating questions",
+                "channel": f"The channel {channel} doesn't support the 'Guess questions' function. Please use channel FastGPT"
+            }
+            code = 1
+            messages = errors[error_type]
+            answers = []
+            return code, messages, answers
+        model = current_user_info['model']
+        mode = current_user_info['mode']
+        conversation_id = current_user_info['conversation_id']
+        knowledge = current_user_info['knowledge']
+        common_key = self.llm_config['channel'][channel]['common_key']
+        questions_url = self.llm_config['channel'][channel]['questions_url']
+        mode_conf = self.llm_config['channel'][channel][model][mode]
+        appId = mode_conf["appId"][knowledge]
+        chatId = conversation_id
+        prompt = f"你是一个智能助手，请根据用户的问题，以列表的形式生成{questions_num}个可能会咨询你的问题。"
+        headers = {'Authorization': common_key,
+                   'Content-Type': 'application/json'}
+        param = {
+            "appId": appId,
+            "chatId": chatId,
+            "questionGuide": {
+                "open": True,
+                "model": model,
+                "customPrompt": prompt
+            }
+        }
+        logs = f"FastGPT create questions request param: ---\n{json.dumps(param, ensure_ascii=False, indent=None)}\n---"
+        api_logger.debug(logs)
+        answers = []
+        response_data = ''
+        try:
+            async with semaphore:  # 整个函数的执行都受到信号量的控制
+                async with aiohttp.ClientSession() as session:
+                    # 准备参数并发起请求
+                    async with session.post(questions_url, headers=headers, data=json.dumps(param), timeout=10) as response:
+                        if response.status == 200:
+                            code = 0
+                            messages = 'FastGPT create questions response session successfully'
+                            response_data = await response.json()  # 如果是 JSON，直接解析
+                            answers = response_data['data']
+                        else:
+                            code = -1
+                            messages = f'FastGPT create questions response failed with status code: {response.status}. '
+        except (asyncio.TimeoutError, json.JSONDecodeError, KeyError, Exception) as e:
+            error_type = type(e).__name__
+            code = -1
+            messages = f'{error_type}: {e}'
+        if answers:
+            logs = f'{messages}, response_data: ===\n{response_data}\n==='
+            api_logger.debug(logs)
+        else:
+            if code != -1:
+                code = -1
+                if response_data:
+                    messages = f"{messages}, ChatGPT response data is empty, response_data: ===\n{response_data}\n==="
+            api_logger.error(messages)
+        return code, messages, answers
+
     async def completions(self, completions_args):
         uid = completions_args['uid']
-        query = completions_args['query'] or completions_args['content']
+        query = completions_args['query']
         if uid not in self.user_info['all_user_info']:
             code = 1
             messages = f"User UID: {uid} doesn't exist, Please upload your settings before the conversation"

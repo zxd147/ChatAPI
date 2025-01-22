@@ -17,7 +17,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request as StarletteRequest
 
 from ChatGPT import Chat
-from openai_schema import SettingsRequest, SettingsResponse, ChatRequest, ChatResponse
+from openai_schema import SettingsRequest, SettingsResponse, QuestionsRequest, QuestionsResponse, ChatRequest, ChatResponse
 from utils.log_utils import setup_logger, get_loger
 
 
@@ -84,8 +84,8 @@ chat_logger = get_loger()
 executor = ThreadPoolExecutor(max_workers=10)
 chat_app = FastAPI()
 secret_key = os.getenv('CHAT-API-SECRET-KEY', 'sk-chat-api')
-chat_app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'], )
 # chat_app.add_middleware(BasicAuthMiddleware, secret_key=secret_key)
+chat_app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'], )
 
 
 # 将 Pydantic 模型实例转换为 JSON 字符串
@@ -170,12 +170,10 @@ async def get_system_status():
 @chat_app.post("/v1/chat/settings")
 async def chat_settings(request: SettingsRequest):
     try:
-        request.mode = "direct" if request.mode == "knowledge" else request.mode
-        request.knowledge = request.knowledge or request.knowledge_base
         sno = request.sno
         logs = f"Settings request param: {request.model_dump()}"
         chat_logger.info(logs)
-        code, messages = await chat.set(request.model_dump())
+        code, messages = await chat.settings(request.model_dump())
         results = SettingsResponse(
             sno=sno,
             code=code,
@@ -200,7 +198,7 @@ async def chat_settings(request: SettingsRequest):
         )
         logs = f"Completions response error: {error_message.model_dump()}"
         chat_logger.error(logs)
-        return JSONResponse(status_code=422, content=error_message.model_dump())
+        return JSONResponse(status_code=409, content=error_message.model_dump())
     # except Exception as e:
     #     sno = request.sno
     #     error_message = SettingsResponse(
@@ -209,6 +207,48 @@ async def chat_settings(request: SettingsRequest):
     #         messages=str(e)
     #     )
     #     logs = f"Settings response error: {error_message.model_dump()}"
+    #     chat_logger.error(logs)
+    #     return JSONResponse(status_code=500, content=error_message.model_dump())
+
+
+@chat_app.post("/v1/chat/questions")
+async def chat_questions(request: QuestionsRequest):
+    try:
+        sno = request.sno
+        logs = f"Questions request param: {request.model_dump()}"
+        chat_logger.info(logs)
+        code, messages, data = await chat.questions(request.model_dump())
+        results = QuestionsResponse(
+            code=code,
+            sno=sno,
+            messages=messages,
+            data=data
+        )
+        logs = f"Questions response results: {results.model_dump()}"
+        chat_logger.info(logs)
+        return JSONResponse(status_code=200, content=results.model_dump())
+    except json.JSONDecodeError as je:
+        error_message = QuestionsResponse(
+            code=-1,
+            messages=f"JSONDecodeError, Invalid JSON format: {str(je)} "
+        )
+        logs = f"Questions response  error: {error_message.model_dump()}"
+        chat_logger.error(logs)
+        return JSONResponse(status_code=400, content=error_message.model_dump())
+    except ValueError as ve:
+        error_message = QuestionsResponse(
+            code=-1,
+            messages=f"ValueError, Invalid value encountered: {str(ve)}"
+        )
+        logs = f"Questions response error: {error_message.model_dump()}"
+        chat_logger.error(logs)
+        return JSONResponse(status_code=409, content=error_message.model_dump())
+    # except Exception as e:
+    #     error_message = QuestionsResponse(
+    #         code=-1,
+    #         messages=f"Exception, {str(e)}"
+    #     )
+    #     logs = f"Questions response error: {error_message.model_dump()}"
     #     chat_logger.error(logs)
     #     return JSONResponse(status_code=500, content=error_message.model_dump())
 
@@ -224,7 +264,6 @@ async def chat_completions(request: ChatRequest):
             code=code,
             sno=sno,
             messages=messages,
-            data=answers,
             answers=answers
         )
         logs = f"Completions response results: {results.model_dump()}"
@@ -245,7 +284,7 @@ async def chat_completions(request: ChatRequest):
         )
         logs = f"Completions response error: {error_message.model_dump()}"
         chat_logger.error(logs)
-        return JSONResponse(status_code=422, content=error_message.model_dump())
+        return JSONResponse(status_code=409, content=error_message.model_dump())
     # except Exception as e:
     #     error_message = ChatResponse(
     #         code=-1,

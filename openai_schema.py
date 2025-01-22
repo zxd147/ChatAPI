@@ -83,9 +83,7 @@ class SettingsRequest(OpenAIBaseModel):
     channel: Literal['FastGPT', 'GraphRAG', 'LangChain'] = 'FastGPT'
     model: Literal['Qwen2-7B-Instruct', 'Qwen2.5-7B-Instruct', 'ChatGLM3-6B'] = 'Qwen2.5-7B-Instruct'
     mode: Literal['default', 'knowledge', 'direct', 'tool', 'local', 'global', 'full'] = 'direct'
-    # knowledge: Literal['zyy', 'dentistry', 'spectrum', 'spectra', 'ecology', 'hengsha', 'guangxin', 'test'] = 'zyy'
-    knowledge: Optional[Literal['zyy', 'dentistry', 'spectrum', 'spectra', 'ecology', 'hengsha', 'guangxin', 'test']] = None
-    knowledge_base: Literal['zyy', 'dentistry', 'spectrum', 'spectra', 'ecology', 'hengsha', 'guangxin', 'test'] = 'dentistry'
+    knowledge: Optional[Literal['zyy', 'dentistry', 'spectrum', 'spectra', 'ecology', 'hengsha', 'guangxin', 'test']] = 'zyy'
     stream: bool = False
     project_type: Union[int, str] = 0
 
@@ -97,13 +95,27 @@ class SettingsResponse(OpenAIBaseModel):
     data: Optional[List[str]] = None
 
 
+class QuestionsRequest(OpenAIBaseModel):
+    sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
+    uid: Optional[Union[int, str]] = 'null'
+    questions_num: int = 3
+    model: str = 'Qwen2.5-7B-Instruct'
+    messages: Optional[List[dict[str, str]]] = []
+
+
+class QuestionsResponse(OpenAIBaseModel):
+    sno: Optional[Union[int, str]] = None
+    code: int
+    messages: str
+    data: Optional[List[str]] = []
+
+
 class ChatRequest(OpenAIBaseModel):
     model: str = 'Qwen2.5-7B-Instruct'
     sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
     uid: Optional[Union[int, str]] = 'null'
     stream: bool = None
-    messages: List[dict[str, str]] = []
-    content: str = ''
+    messages: Optional[List[dict[str, str]]] = []
     query: str = ''
 
 
@@ -111,7 +123,6 @@ class ChatResponse(OpenAIBaseModel):
     sno: Optional[Union[int, str]] = None
     code: int
     messages: str
-    data: Optional[List[str]] = []
     answers: Optional[List[str]] = []
 
 
