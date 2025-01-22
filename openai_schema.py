@@ -99,6 +99,7 @@ class QuestionsRequest(OpenAIBaseModel):
     sno: Union[int, str] = Field(default_factory=lambda: int(time.time() * 100))
     uid: Optional[Union[int, str]] = 'null'
     questions_num: int = 3
+    prompt: str = "你是一个智能助手，请根据用户的聊天记录，以列表的形式预测生成{}个可能会咨询你的问题。"
     model: str = 'Qwen2.5-7B-Instruct'
     messages: Optional[List[dict[str, str]]] = []
 

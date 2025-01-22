@@ -49,6 +49,7 @@ class Chat:
     async def questions(self, questions_args):
         uid = questions_args['uid']
         questions_num = questions_args['questions_num']
+        prompt = questions_args['prompt']
         current_user_info = self.user_info['all_user_info'][uid]
         channel = current_user_info['channel']
         if uid not in self.user_info['all_user_info'] or channel != 'FastGPT':
@@ -70,7 +71,7 @@ class Chat:
         mode_conf = self.llm_config['channel'][channel][model][mode]
         appId = mode_conf["appId"][knowledge]
         chatId = conversation_id
-        prompt = f"你是一个智能助手，请根据用户的问题，以列表的形式生成{questions_num}个可能会咨询你的问题。"
+        prompt = prompt.format(questions_num) if '{}' in prompt else prompt
         headers = {'Authorization': common_key,
                    'Content-Type': 'application/json'}
         param = {
